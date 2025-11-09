@@ -10,20 +10,36 @@ namespace Trellcko.Core.Input
 
         public Vector2 GetMoveVector() => _actions.Player.Move.ReadValue<Vector2>();
         public Vector2 GetMouseDelta() => _actions.Player.Rotation.ReadValue<Vector2>();
+        public event Action<Vector2> Moved;
         public event Action<Vector2> MouseMoved;
+        public event Action Interacted;
 
         public InputHandler()
         {
             _actions.Enable();
-            _actions.Player.Rotation.performed += OnPerformed;
+            _actions.Player.Rotation.performed += OnRotationPerformed;
+            _actions.Player.Move.performed += OnMovePerformed;
+            _actions.Player.Interact.performed += OnInteracted;
         }
 
         public void Dispose()
         {
-            _actions.Player.Rotation.performed -= OnPerformed;
+            _actions.Player.Move.performed -= OnMovePerformed;
+            _actions.Player.Rotation.performed -= OnRotationPerformed;
+            _actions.Player.Interact.performed -= OnInteracted;
         }
 
-        private void OnPerformed(InputAction.CallbackContext obj)
+        private void OnInteracted(InputAction.CallbackContext obj)
+        {
+            Interacted?.Invoke();
+        }
+
+        private void OnMovePerformed(InputAction.CallbackContext obj)
+        {
+            Moved?.Invoke(obj.ReadValue<Vector2>());
+        }
+
+        private void OnRotationPerformed(InputAction.CallbackContext obj)
         {
             MouseMoved?.Invoke(obj.ReadValue<Vector2>());
         }

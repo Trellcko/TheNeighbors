@@ -7,6 +7,8 @@ namespace Trellcko.Core.Input
     {
         Vector2 GetMoveVector();
         Vector2 GetMouseDelta();
+        event Action<Vector2> Moved;
         event Action<Vector2> MouseMoved;
+        event Action Interacted;
     }
 }
