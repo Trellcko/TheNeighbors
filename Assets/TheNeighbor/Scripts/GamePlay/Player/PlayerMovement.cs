@@ -12,6 +12,7 @@ namespace Trellcko.Gameplay.Player
         
         private IInputHandler _inputHandler;
 
+        public bool IsEnabled { get; set; } = true;
         
         [Inject]
         private void Inject(IInputHandler inputHandler)
@@ -21,7 +22,8 @@ namespace Trellcko.Gameplay.Player
 
         private void FixedUpdate()
         {
-            Move(_inputHandler.GetMoveVector());
+            if(IsEnabled)
+                Move(_inputHandler.GetMoveVector());
         }
 
         private void Move(Vector2 inputVector)

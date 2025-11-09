@@ -8,7 +8,6 @@ namespace Trellcko.Gameplay.QuestLogic
     {
         [field: SerializeField] public string Description { get; private set; }
         [field: SerializeField] public QuestInteractable QuestInteractable { get; private set; }
-        
         public event Action Completed;
         public void Activate()
         {

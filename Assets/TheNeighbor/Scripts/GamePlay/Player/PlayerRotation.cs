@@ -9,6 +9,9 @@ namespace Trellcko.Gameplay.Player
     {
         [SerializeField] private float _sensitivity = 200f;
         [SerializeField] private float _maxPitch = 10f;
+        
+        public bool IsEnabled { get; set; } = true;
+        
         private float _currentPitch = 0f;
         private IInputHandler _input;
         private float _totalY;
@@ -27,7 +30,8 @@ namespace Trellcko.Gameplay.Player
 
         private void Update()
         {
-            Look(_input.GetMouseDelta());
+            if(IsEnabled)
+                Look(_input.GetMouseDelta());
         }
 
         private void OnMouseMoved(Vector2 mouseDelta)

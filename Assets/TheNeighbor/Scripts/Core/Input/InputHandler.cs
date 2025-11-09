@@ -11,6 +11,7 @@ namespace Trellcko.Core.Input
         public Vector2 GetMoveVector() => _actions.Player.Move.ReadValue<Vector2>();
         public Vector2 GetMouseDelta() => _actions.Player.Rotation.ReadValue<Vector2>();
         public event Action<Vector2> Moved;
+        public event Action MovedCanceled;
         public event Action<Vector2> MouseMoved;
         public event Action Interacted;
 
@@ -19,6 +20,7 @@ namespace Trellcko.Core.Input
             _actions.Enable();
             _actions.Player.Rotation.performed += OnRotationPerformed;
             _actions.Player.Move.performed += OnMovePerformed;
+            _actions.Player.Move.canceled += OnMoveCanceled;
             _actions.Player.Interact.performed += OnInteracted;
         }
 
@@ -26,12 +28,18 @@ namespace Trellcko.Core.Input
         {
             _actions.Player.Move.performed -= OnMovePerformed;
             _actions.Player.Rotation.performed -= OnRotationPerformed;
+            _actions.Player.Move.canceled -= OnMoveCanceled;
             _actions.Player.Interact.performed -= OnInteracted;
         }
 
         private void OnInteracted(InputAction.CallbackContext obj)
         {
             Interacted?.Invoke();
+        }
+
+        private void OnMoveCanceled(InputAction.CallbackContext obj)
+        {
+            MovedCanceled?.Invoke();
         }
 
         private void OnMovePerformed(InputAction.CallbackContext obj)
