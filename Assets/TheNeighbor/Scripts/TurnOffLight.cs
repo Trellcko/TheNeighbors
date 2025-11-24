@@ -15,19 +15,19 @@ public class TurnOffLight : MonoBehaviour
     {
         if (Keyboard.current.digit1Key.wasPressedThisFrame)
         {
-            lights[0].gameObject.SetActive(false);
+            lights[0].gameObject.SetActive(!lights[0].activeSelf);
         }
         else if (Keyboard.current.digit2Key.wasPressedThisFrame)
         {
-            lights[1].gameObject.SetActive(false);
+            lights[1].gameObject.SetActive(!lights[1].activeSelf);
         }
         else if (Keyboard.current.digit3Key.wasPressedThisFrame)
         {
-            lights[2].gameObject.SetActive(false);
+            lights[2].gameObject.SetActive(!lights[2].activeSelf);
         }
         else if (Keyboard.current.digit4Key.wasPressedThisFrame)
         {
-            lights[3].gameObject.SetActive(false);
+            lights[3].gameObject.SetActive(!lights[3].activeSelf);
         }
         else if(Keyboard.current.digit5Key.wasPressedThisFrame)
         {

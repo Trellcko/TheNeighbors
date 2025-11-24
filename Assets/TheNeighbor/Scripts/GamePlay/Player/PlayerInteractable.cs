@@ -9,6 +9,9 @@ namespace Trellcko.Gameplay.Player
     public class PlayerInteractable : MonoBehaviour
     {
         [SerializeField] private float _rayLength;
+        [SerializeField] private PlayerBringing _playerBringing;
+        
+        public QuestItem _item;
         
         private IInputHandler _inputHandler;
 
@@ -90,9 +93,11 @@ namespace Trellcko.Gameplay.Player
             }
             if (TryGetInteractable(out QuestInteractable questInteractable))
             {
-                if (questInteractable.IsInteractable)
+                if(questInteractable.TryInteract(out QuestItem tempItem, _item))
                 {
-                    questInteractable.Interact();
+                    _playerBringing.SetItem(QuestItem.None);
+                    _item = tempItem;
+                    _playerBringing.SetItem(_item);
                     _lastInteractable = questInteractable;
                 }
             }

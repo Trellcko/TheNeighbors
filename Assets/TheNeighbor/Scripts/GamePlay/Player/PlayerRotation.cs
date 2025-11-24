@@ -16,6 +16,8 @@ namespace Trellcko.Gameplay.Player
         private IInputHandler _input;
         private float _totalY;
 
+        private Vector3 _startAngel;
+        
         [Inject]
         private void Inject(IInputHandler inputHandler)
         {
@@ -24,25 +26,24 @@ namespace Trellcko.Gameplay.Player
 
         private void Awake()
         {
+            _currentPitch = transform.eulerAngles.x;
+            _maxPitch = transform.eulerAngles.y;
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
 
         private void Update()
         {
-            if(IsEnabled)
+            if (IsEnabled)
                 Look(_input.GetMouseDelta());
-        }
 
-        private void OnMouseMoved(Vector2 mouseDelta)
-        {
-            Look(mouseDelta);
+
         }
 
         private void Look(Vector2 mouseDelta)
         {
             mouseDelta *= _sensitivity * Time.deltaTime;
-
+            
             _totalY += mouseDelta.x;
 
             _currentPitch -= mouseDelta.y;

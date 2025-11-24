@@ -6,8 +6,10 @@ namespace Trellcko.Gameplay
 {
     public class LookAtPlayer : MonoBehaviour
     {
+        [SerializeField] private Vector3 _offset;
+        
         private PlayerFacade _playerFacade;
-
+        
         [Inject]
         private void Construct(PlayerFacade playerFacade)
         {
@@ -22,7 +24,7 @@ namespace Trellcko.Gameplay
                 dir.y = 0;
                 dir.Normalize();
                 
-                transform.rotation = Quaternion.LookRotation(dir) *  Quaternion.Euler(0, 180, 0);
+                transform.rotation = Quaternion.LookRotation(dir) *  Quaternion.Euler(0, 180, 0) * Quaternion.Euler(_offset.x, _offset.y, _offset.z);
             }
         }
     }
