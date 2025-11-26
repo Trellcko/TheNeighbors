@@ -16,8 +16,8 @@ namespace Trellcko.Gameplay.Player
         private IInputHandler _inputHandler;
 
         private Camera _camera;
-
-        private QuestInteractable _lastInteractable;
+        
+        private IInteractable _lastInteractable;
 
         private readonly RaycastHit[] _hits = new RaycastHit[5];
 
@@ -53,21 +53,18 @@ namespace Trellcko.Gameplay.Player
 
         private void CheckForSelectables()
         {
-            if (_lastInteractable)
-            {
-                _lastInteractable.DisableSelectOutline();
-            }
-            if (TryGetInteractable(out QuestInteractable questInteractable))
+            _lastInteractable?.InteractableOutline.EnableInteractOutline();
+            if (TryGetInteractable(out IInteractable questInteractable))
             {
                 if (questInteractable.IsInteractable)
                 {
-                    questInteractable.EnableSelectOutline();
+                    questInteractable.InteractableOutline.EnableSelectOutline();
                     _lastInteractable = questInteractable;
                 }
             }
         }
 
-        private bool TryGetInteractable(out QuestInteractable questInteractable)
+        private bool TryGetInteractable(out IInteractable questInteractable)
         {
             questInteractable = null;
             Ray ray = new(_camera.transform.position, _camera.transform.forward);
@@ -86,12 +83,9 @@ namespace Trellcko.Gameplay.Player
         }
 
         private void OnInteractButtonClicked()
-        {  
-            if (_lastInteractable)
-            {
-                _lastInteractable.DisableSelectOutline();
-            }
-            if (TryGetInteractable(out QuestInteractable questInteractable))
+        {
+            _lastInteractable?.InteractableOutline.EnableInteractOutline();
+            if (TryGetInteractable(out IInteractable questInteractable))
             {
                 if(questInteractable.TryInteract(out QuestItem tempItem, _item))
                 {

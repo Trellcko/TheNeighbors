@@ -1,6 +1,7 @@
 ﻿using System;
 using HighlightPlus;
 using NaughtyAttributes;
+using Trellcko.Gameplay.Interactable;
 using UnityEngine;
 
 namespace Trellcko.Gameplay.QuestLogic
@@ -11,35 +12,24 @@ namespace Trellcko.Gameplay.QuestLogic
         Clothes
     }
     
-    public class QuestInteractable : MonoBehaviour
+    public class QuestInteractable : MonoBehaviour, IInteractable
     {
-        
+        [field: SerializeField] public InteractableOutline InteractableOutline { get; private set; }
         [field: SerializeField] public QuestItem NeededItem { get; private set; } = QuestItem.None;
         [field: SerializeField] public QuestItem ReceiveItem { get; private set; } = QuestItem.None;
         
-        [SerializeField] private HighlightEffect _highlightEffect;
         [SerializeField] private AudioSource _audioSource;
 
         [SerializeField] private bool _disableAfterGetting;
-        
-        private HighlightProfile _selectProfile;
-        private HighlightProfile _interactableProfile;
-        
         public event Action Interacted;
         public bool IsInteractable { get; private set; }
-
-        private void Awake()
-        {
-            _interactableProfile = Resources.Load<HighlightProfile>("Outline/InteractableOutline");
-            _selectProfile = Resources.Load<HighlightProfile>("Outline/SelectedOutline");
-        }
         
         [Button]
         public void EnableInteraction()
         {
             IsInteractable = true;
-            _highlightEffect.ProfileLoad(_interactableProfile);
-            _highlightEffect.highlighted = true;
+            InteractableOutline.SetIsActive(true);
+            InteractableOutline.EnableInteractOutline();
         }
 
         public bool TryInteract(out QuestItem getItem, QuestItem neededItem)
@@ -51,7 +41,7 @@ namespace Trellcko.Gameplay.QuestLogic
             Interacted?.Invoke();
             _audioSource?.Play();
             IsInteractable = false;
-            _highlightEffect.highlighted = false;
+            InteractableOutline.SetIsActive(false);
             if (_disableAfterGetting)
             {
                 gameObject.SetActive(false);
@@ -59,16 +49,5 @@ namespace Trellcko.Gameplay.QuestLogic
             return true;
         }
         
-        [Button]
-        public void EnableSelectOutline()
-        {
-            _highlightEffect.ProfileLoad(_selectProfile);
-        }
-
-        [Button]
-        public void DisableSelectOutline()
-        {
-            _highlightEffect.ProfileLoad(_interactableProfile);
-        }
     }
 }
