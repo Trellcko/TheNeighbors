@@ -24,20 +24,24 @@ namespace Trellcko.Gameplay.Interactable
             _selectProfile = Resources.Load<HighlightProfile>("Outline/SelectedOutline");
         }
         
-        public void SetIsActive(bool isActive)
+        public void Disable()
         {
-            _highlightEffect.highlighted = isActive;
+            _highlightEffect.highlighted = false;
         }
         
         [Button]
-        public void EnableSelectOutline()
+        public void EnableSelectOutline(bool force = true)
         {
+            if(force)
+                _highlightEffect.highlighted = true;
             _highlightEffect.ProfileLoad(_selectProfile);
         }
 
         [Button]
-        public void EnableInteractOutline()
+        public void EnableInteractOutline(bool force = true)
         {
+            if(force)
+                _highlightEffect.highlighted = true;
             _highlightEffect.ProfileLoad(_interactableProfile);
         }
     }

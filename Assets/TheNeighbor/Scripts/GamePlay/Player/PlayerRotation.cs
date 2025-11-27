@@ -27,7 +27,7 @@ namespace Trellcko.Gameplay.Player
         private void Awake()
         {
             _currentPitch = transform.eulerAngles.x;
-            _maxPitch = transform.eulerAngles.y;
+            _totalY = transform.eulerAngles.y;
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }

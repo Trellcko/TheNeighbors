@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class TurnOffLight : MonoBehaviour
 {
     [SerializeField] private List<GameObject> lights;
+    [SerializeField] private AudioSource knocking;
 
     [SerializeField] private GameObject teleport;
     [SerializeField] private GameObject monster;
@@ -27,7 +28,7 @@ public class TurnOffLight : MonoBehaviour
         }
         else if (Keyboard.current.digit4Key.wasPressedThisFrame)
         {
-            lights[3].gameObject.SetActive(!lights[3].activeSelf);
+            knocking.Play();
         }
         else if(Keyboard.current.digit5Key.wasPressedThisFrame)
         {

@@ -1,6 +1,5 @@
 using System;
 using DG.Tweening;
-using NaughtyAttributes;
 using Trellcko.Gameplay.Interactable;
 using Trellcko.Gameplay.QuestLogic;
 using UnityEngine;
@@ -8,17 +7,18 @@ using Zenject;
 
 public class Door : MonoBehaviour, IInteractable
 {
-    [SerializeField] private float _openTime;
+    [SerializeField] private Collider _goCollider;
+    [SerializeField] private AudioSource _interactAudio;
     [field: SerializeField] public InteractableOutline InteractableOutline { get; private set; }
-    public bool IsInteractable { get; private set; }
-    
-    private PlayerFacade _playerFacade;
+    public bool IsInteractable { get; private set; } = true;
 
     public event Action Interacted;
 
+    private PlayerFacade _playerFacade;
     private Vector3 _defaultAngel;
-
     private Tween _tween;
+    
+    private const float OpenTime = 3f;
 
     [Inject]
     private void Construct(PlayerFacade playerFacade)
@@ -28,7 +28,7 @@ public class Door : MonoBehaviour, IInteractable
 
     private void Awake()
     {
-        _defaultAngel = transform.eulerAngles;
+        _defaultAngel = transform.localEulerAngles;
     }
 
     public bool TryInteract(out QuestItem getItem, QuestItem neededItem)
@@ -36,11 +36,14 @@ public class Door : MonoBehaviour, IInteractable
         getItem = neededItem;
         if (IsInteractable && _playerFacade)
         {
+            InteractableOutline.Disable();
             IsInteractable = false;
             float angel = GetOpenAngel();
             Vector3 targetAngel = _defaultAngel;
             targetAngel.y = angel;
-            _tween = transform.DORotate(targetAngel, _openTime);
+            _interactAudio.Play();
+            _tween = transform.DOLocalRotate(targetAngel, OpenTime)
+                .OnComplete(() => { _goCollider.enabled = false;});
             
             return true;
         }
@@ -50,7 +53,12 @@ public class Door : MonoBehaviour, IInteractable
 
     public void ReturnToInit()
     {
-        _tween = transform.DORotate(_defaultAngel, _openTime).OnComplete(() => IsInteractable = true);
+        if (!IsInteractable && _goCollider.enabled)
+            return;
+        
+        _interactAudio.Play();
+        _goCollider.enabled = false;
+        _tween = transform.DOLocalRotate(_defaultAngel, OpenTime).OnComplete(() => IsInteractable = true);
     }
 
     private float GetOpenAngel()

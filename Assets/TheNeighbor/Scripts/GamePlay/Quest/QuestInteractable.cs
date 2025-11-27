@@ -28,7 +28,6 @@ namespace Trellcko.Gameplay.QuestLogic
         public void EnableInteraction()
         {
             IsInteractable = true;
-            InteractableOutline.SetIsActive(true);
             InteractableOutline.EnableInteractOutline();
         }
 
@@ -41,7 +40,7 @@ namespace Trellcko.Gameplay.QuestLogic
             Interacted?.Invoke();
             _audioSource?.Play();
             IsInteractable = false;
-            InteractableOutline.SetIsActive(false);
+            InteractableOutline.Disable();
             if (_disableAfterGetting)
             {
                 gameObject.SetActive(false);

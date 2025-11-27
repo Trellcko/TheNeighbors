@@ -1,4 +1,5 @@
 using System;
+using TheNeighbor.Scripts.Constants;
 using Trellcko.Core.Input;
 using Trellcko.Gameplay.QuestLogic;
 using UnityEngine;
@@ -53,7 +54,7 @@ namespace Trellcko.Gameplay.Player
 
         private void CheckForSelectables()
         {
-            _lastInteractable?.InteractableOutline.EnableInteractOutline();
+            _lastInteractable?.InteractableOutline.EnableInteractOutline(false);
             if (TryGetInteractable(out IInteractable questInteractable))
             {
                 if (questInteractable.IsInteractable)
@@ -69,8 +70,8 @@ namespace Trellcko.Gameplay.Player
             questInteractable = null;
             Ray ray = new(_camera.transform.position, _camera.transform.forward);
 
-            int count = Physics.RaycastNonAlloc(ray, _hits, _rayLength);
-
+            int count = Physics.RaycastNonAlloc(ray, _hits, _rayLength, Layers.Interactable);
+            
             for (int i = 0; i < count; i++)
             {
                 if (_hits[i].transform.TryGetComponent(out questInteractable))
