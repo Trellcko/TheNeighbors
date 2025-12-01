@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Trellcko.Gameplay;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,6 +9,8 @@ public class TurnOffLight : MonoBehaviour
     [SerializeField] private List<GameObject> lights;
     [SerializeField] private AudioSource knocking;
 
+    [SerializeField] private TVController _tvController;
+    
     [SerializeField] private GameObject teleport;
     [SerializeField] private GameObject monster;
     [SerializeField] private GameObject cameraRotation;
@@ -30,11 +33,18 @@ public class TurnOffLight : MonoBehaviour
         {
             knocking.Play();
         }
+        else if (Keyboard.current.digit5Key.wasPressedThisFrame)
+        {
+            if(!_tvController.IsWorked)
+                _tvController.TurnOn();
+            else
+                _tvController.TurnOff();
+        }
         else if(Keyboard.current.digit5Key.wasPressedThisFrame)
         {
             monster.transform.position = teleport.transform.position;
         }
-        else if (Keyboard.current.digit6Key.wasPressedThisFrame)
+        else if (Keyboard.current.digit8Key.wasPressedThisFrame)
         {
             cameraRotation.SetActive(!cameraRotation.activeSelf);
         }
