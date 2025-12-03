@@ -9,7 +9,8 @@ namespace Trellcko.Gameplay.QuestLogic
     public enum QuestItem
     {
         None, 
-        Clothes
+        Clothes,
+        Mop
     }
     
     public class QuestInteractable : MonoBehaviour, IInteractable
@@ -38,6 +39,7 @@ namespace Trellcko.Gameplay.QuestLogic
                 return false;
             
             Interacted?.Invoke();
+if(_audioSource)
             _audioSource?.Play();
             IsInteractable = false;
             InteractableOutline.Disable();

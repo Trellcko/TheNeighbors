@@ -63,6 +63,13 @@ namespace Trellcko.Gameplay.Player
                     _lastInteractable = questInteractable;
                 }
             }
+            else
+            {
+                if (_lastInteractable is not QuestInteractable)
+                {
+                    _lastInteractable?.InteractableOutline.Disable();
+                }
+            }
         }
 
         private bool TryGetInteractable(out IInteractable questInteractable)
