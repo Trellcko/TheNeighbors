@@ -10,7 +10,8 @@ namespace Trellcko.Gameplay.QuestLogic
     {
         None, 
         Clothes,
-        Mop
+        Mop,
+        WaterThing
     }
     
     public class QuestInteractable : MonoBehaviour, IInteractable
@@ -37,18 +38,19 @@ namespace Trellcko.Gameplay.QuestLogic
             getItem = ReceiveItem;
             if (!IsInteractable || NeededItem != neededItem)
                 return false;
-            
+
             Interacted?.Invoke();
-if(_audioSource)
-            _audioSource?.Play();
+            if (_audioSource)
+                _audioSource?.Play();
             IsInteractable = false;
             InteractableOutline.Disable();
             if (_disableAfterGetting)
             {
                 gameObject.SetActive(false);
             }
+
             return true;
         }
-        
+
     }
 }
