@@ -9,6 +9,8 @@ namespace Trellcko.Gameplay.Player
     public class PlayerAudioStepsHandler : MonoBehaviour
     {
         [SerializeField] private AudioSource _audioSource;
+        [SerializeField] private AudioClip _walking;
+        [SerializeField] private AudioClip _running;
         [SerializeField] private float _pinchMaxStep;
         [SerializeField] private float _timeToChangePinch = 1.26f;
 
@@ -28,12 +30,16 @@ namespace Trellcko.Gameplay.Player
         {
             _inputHandler.Moved += OnMoved;
             _inputHandler.MovedCanceled += OnMovedCanceled;
+            _inputHandler.Sprint += OnSprintPerformed;
+            _inputHandler.SprintCanceled += OnSprintCanceled;
         }
 
         private void OnDisable()
         {
             _inputHandler.Moved -= OnMoved;
             _inputHandler.MovedCanceled -= OnMovedCanceled;
+            _inputHandler.Sprint -= OnSprintPerformed;
+            _inputHandler.SprintCanceled -= OnSprintCanceled;
         }
 
         private void Update()
@@ -62,6 +68,27 @@ namespace Trellcko.Gameplay.Player
             _time = 0f;
             _isPlayed = true;
             _audioSource.Play();
+        }
+
+        private void OnSprintCanceled()
+        {
+            if (_audioSource.clip != _walking)
+                ChangeMainSound(_walking);
+        }
+
+        private void ChangeMainSound(AudioClip clip)
+        {
+            bool wasPlaying = _audioSource.isPlaying;
+            _audioSource.clip = clip;
+            if (wasPlaying)
+            {
+                _audioSource.Play();
+            }
+        }
+
+        private void OnSprintPerformed()
+        {
+            ChangeMainSound(_running);
         }
     }
 }

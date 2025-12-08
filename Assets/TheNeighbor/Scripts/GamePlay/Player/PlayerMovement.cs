@@ -9,8 +9,11 @@ namespace Trellcko.Gameplay.Player
         [SerializeField] private Rigidbody _rb;
         [SerializeField] private Transform _forward;
         [SerializeField] private float _speed;
+        [SerializeField] private float _runningSpeed = 5f;
         
         private IInputHandler _inputHandler;
+
+        private float _currentSpeed;
 
         public bool IsEnabled { get; set; } = true;
         
@@ -20,10 +23,37 @@ namespace Trellcko.Gameplay.Player
             _inputHandler = inputHandler;
         }
 
+        private void Awake()
+        {
+            _currentSpeed = _speed;
+        }
+
+        private void OnEnable()
+        {
+            _inputHandler.Sprint += OnSprint;
+            _inputHandler.SprintCanceled += OnSprintCanceled;
+        }
+
+        private void OnDisable()
+        {
+            _inputHandler.Sprint -= OnSprint;
+            _inputHandler.SprintCanceled -= OnSprintCanceled;
+        }
+
         private void FixedUpdate()
         {
             if(IsEnabled)
                 Move(_inputHandler.GetMoveVector());
+        }
+
+        private void OnSprintCanceled()
+        {
+            _currentSpeed = _speed;
+        }
+
+        private void OnSprint()
+        {
+            _currentSpeed = _runningSpeed;
         }
 
         private void Move(Vector2 inputVector)
@@ -33,7 +63,7 @@ namespace Trellcko.Gameplay.Player
             moveVector.y = 0;
             moveVector.Normalize();
             
-            _rb.MovePosition( _rb.position + _speed * Time.fixedDeltaTime * moveVector);
+            _rb.MovePosition( _rb.position + _currentSpeed * Time.fixedDeltaTime * moveVector);
         }
     }
 }

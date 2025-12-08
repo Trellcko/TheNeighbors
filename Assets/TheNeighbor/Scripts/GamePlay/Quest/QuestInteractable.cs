@@ -1,19 +1,10 @@
 ﻿using System;
-using HighlightPlus;
 using NaughtyAttributes;
 using Trellcko.Gameplay.Interactable;
 using UnityEngine;
 
 namespace Trellcko.Gameplay.QuestLogic
 {
-    public enum QuestItem
-    {
-        None, 
-        Clothes,
-        Mop,
-        WaterThing
-    }
-    
     public class QuestInteractable : MonoBehaviour, IInteractable
     {
         [field: SerializeField] public InteractableOutline InteractableOutline { get; private set; }
@@ -26,6 +17,13 @@ namespace Trellcko.Gameplay.QuestLogic
         public event Action Interacted;
         public bool IsInteractable { get; private set; }
         
+        private MeshRenderer _meshRenderer;
+
+        private void Awake()
+        {
+            _meshRenderer = GetComponent<MeshRenderer>();
+        }
+
         [Button]
         public void EnableInteraction()
         {
@@ -46,7 +44,7 @@ namespace Trellcko.Gameplay.QuestLogic
             InteractableOutline.Disable();
             if (_disableAfterGetting)
             {
-                gameObject.SetActive(false);
+                _meshRenderer.enabled = false;
             }
 
             return true;

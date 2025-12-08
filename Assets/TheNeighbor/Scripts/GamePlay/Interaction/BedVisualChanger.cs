@@ -25,7 +25,9 @@ namespace Trellcko.Gameplay.Interactable
 
         private void OnInteracted()
         {
-            _meshRenderer.sharedMaterials[2] = _goodBed;
+            Material[] materials = _meshRenderer.materials;
+            materials[2] = _goodBed;
+            _meshRenderer.sharedMaterials= materials;
         }
 
 
