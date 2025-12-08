@@ -1,6 +1,7 @@
 using System;
 using DG.Tweening;
 using Trellcko.Gameplay.Interactable;
+using Trellcko.Gameplay.Player;
 using Trellcko.Gameplay.QuestLogic;
 using UnityEngine;
 using Zenject;

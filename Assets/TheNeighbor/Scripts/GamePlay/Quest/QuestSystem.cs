@@ -26,6 +26,14 @@ namespace Trellcko.Gameplay.QuestLogic
             DayStarted?.Invoke();
         }
 
+        public void StartNextDay()
+        {
+            Day++;            
+            _questDays[Day].Init();
+            _questDays[Day].AllQuestsCompleted += OnAllQuestsInDayCompleted;
+            DayStarted?.Invoke();
+        }
+        
         private void OnAllQuestsInDayCompleted()
         {
             _questDays[Day].AllQuestsCompleted -= OnAllQuestsInDayCompleted;
@@ -33,13 +41,7 @@ namespace Trellcko.Gameplay.QuestLogic
             if (Day == _questDays.Count - 1)
             {
                 AllDaysCompleted?.Invoke();
-                return;
             }
-
-            Day++;            
-            _questDays[Day].Init();
-            _questDays[Day].AllQuestsCompleted += OnAllQuestsInDayCompleted;
-            DayStarted?.Invoke();
         }
     }
 }

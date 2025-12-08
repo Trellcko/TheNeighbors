@@ -1,4 +1,5 @@
 using System;
+using Trellcko.Gameplay.Player;
 using UnityEngine;
 using Zenject;
 
