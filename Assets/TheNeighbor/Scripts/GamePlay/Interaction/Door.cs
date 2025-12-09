@@ -1,75 +1,83 @@
 using System;
 using DG.Tweening;
-using Trellcko.Gameplay.Interactable;
 using Trellcko.Gameplay.Player;
 using Trellcko.Gameplay.QuestLogic;
 using UnityEngine;
 using Zenject;
 
-public class Door : MonoBehaviour, IInteractable
+namespace Trellcko.Gameplay.Interactable
 {
-    [SerializeField] private Collider _goCollider;
-    [SerializeField] private AudioSource _interactAudio;
-    [field: SerializeField] public InteractableOutline InteractableOutline { get; private set; }
-    public bool IsInteractable { get; private set; } = true;
-
-    public event Action Interacted;
-
-    private PlayerFacade _playerFacade;
-    private Vector3 _defaultAngel;
-    private Tween _tween;
-    
-    private const float OpenTime = 3f;
-
-    [Inject]
-    private void Construct(PlayerFacade playerFacade)
+    public class Door : MonoBehaviour, IInteractable
     {
-        _playerFacade = playerFacade;
-    }
+        [SerializeField] private Collider _goCollider;
+        [SerializeField] private AudioSource _interactAudio;
+        [field: SerializeField] public InteractableOutline InteractableOutline { get; private set; }
+        public bool IsInteractable { get; private set; } = true;
 
-    private void Awake()
-    {
-        _defaultAngel = transform.localEulerAngles;
-    }
+        public event Action Interacted;
 
-    public bool TryInteract(out QuestItem getItem, QuestItem neededItem)
-    {
-        getItem = neededItem;
-        if (IsInteractable && _playerFacade)
+        private PlayerFacade _playerFacade;
+        private Vector3 _defaultAngel;
+        private Tween _tween;
+
+        private const float OpenTime = 3f;
+
+        [Inject]
+        private void Construct(PlayerFacade playerFacade)
         {
-            InteractableOutline.Disable();
-            IsInteractable = false;
-            float angel = GetOpenAngel();
-            Vector3 targetAngel = _defaultAngel;
-            targetAngel.y = angel;
+            _playerFacade = playerFacade;
+        }
+
+        private void Awake()
+        {
+            _defaultAngel = transform.localEulerAngles;
+        }
+
+        public bool TryInteract(out QuestItem getItem, QuestItem neededItem)
+        {
+            getItem = neededItem;
+            if (IsInteractable && _playerFacade)
+            {
+                InteractableOutline.Disable();
+                IsInteractable = false;
+                float angel = GetOpenAngel();
+                Vector3 targetAngel = _defaultAngel;
+                targetAngel.y = angel;
+                _interactAudio.Play();
+                _tween = transform.DOLocalRotate(targetAngel, OpenTime)
+                    .OnComplete(() => { _goCollider.enabled = false; });
+
+                return true;
+            }
+
+            return false;
+        }
+
+        public void ReturnToInitImmediately()
+        {
+            transform.localRotation = Quaternion.Euler(_defaultAngel);
+        }
+
+        public void ReturnToInit()
+        {
+            if (!IsInteractable && _goCollider.enabled)
+                return;
+
             _interactAudio.Play();
-            _tween = transform.DOLocalRotate(targetAngel, OpenTime)
-                .OnComplete(() => { _goCollider.enabled = false;});
-            
-            return true;
+            _goCollider.enabled = false;
+            _tween = transform.DOLocalRotate(_defaultAngel, OpenTime).OnComplete(() => IsInteractable = true);
         }
 
-        return false;
-    }
-
-    public void ReturnToInit()
-    {
-        if (!IsInteractable && _goCollider.enabled)
-            return;
-        
-        _interactAudio.Play();
-        _goCollider.enabled = false;
-        _tween = transform.DOLocalRotate(_defaultAngel, OpenTime).OnComplete(() => IsInteractable = true);
-    }
-
-    private float GetOpenAngel()
-    {
-        Vector3 toPlayer = (_playerFacade.transform.position - transform.position).normalized;
-        float dot = Vector2.SignedAngle(transform.forward, toPlayer);
-        if (dot > 0)
+        private float GetOpenAngel()
         {
-            return -90;
+            Vector3 toPlayer = (_playerFacade.transform.position - transform.position).normalized;
+            float dot = Vector2.SignedAngle(transform.forward, toPlayer);
+            if (dot > 0)
+            {
+                return -90;
+            }
+
+            return 90;
         }
-        return 90;
     }
 }

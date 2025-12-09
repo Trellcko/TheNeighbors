@@ -19,21 +19,21 @@ namespace Trellcko.UI
 
         private Sequence _sequence;
 
-        public void Show(int day, Action callback = null)
+        public void ShowUI(int day, Action callback = null)
         {
             _sequence?.Kill();
-            _canvasGroup.alpha = 0;           
             if(day < 0)
                 _dayText.SetText("");
             else
             {
                 _dayText.SetText(Day + day);
             }
+            _canvasGroup.alpha = 0;           
             _sequence = DOTween.Sequence();
             _sequence.Append(ShowTween()).OnComplete(()=>callback?.Invoke());
         }
 
-        public void Hide(Action callback = null)
+        public void HideUI(Action callback = null)
         {
             _sequence?.Kill();
             _canvasGroup.alpha = 1;
@@ -41,7 +41,7 @@ namespace Trellcko.UI
             _sequence.Append(HideTween().SetDelay(_waitTime)).OnComplete(()=>callback?.Invoke());
         }
 
-        public void ShowAndHide(int day, Action callback = null)
+        public void ShowAndHideUI(int day, Action callback = null)
         {
             _sequence?.Kill();
             _canvasGroup.alpha = 0;

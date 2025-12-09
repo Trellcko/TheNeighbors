@@ -10,20 +10,22 @@ namespace Trellcko.Gameplay.QuestLogic
     public class QuestSystemDayChangeActor : MonoBehaviour
     {
         [SerializeField] private List<BaseCinematic> _cinematic;
-        
+
         private FinishDayUI _finishDayUI;
+        private GameUI _gameUI;
         private PlayerFacade _player;
         private IQuestSystem _questSystem;
 
         private PlayerMovement PlayerMovement => _player.PlayerMovement;
         private PlayerRotation PlayerRotation => _player.PlayerRotation;
-        
+
         [Inject]
-        private void Construct(IQuestSystem questSystem, PlayerFacade player, FinishDayUI finishDayUI)
+        private void Construct(IQuestSystem questSystem, PlayerFacade player, FinishDayUI finishDayUI, GameUI gameUI)
         {
             _player = player;
             _questSystem = questSystem;
             _finishDayUI = finishDayUI;
+            _gameUI = gameUI;
         }
 
         private void Awake()
@@ -39,16 +41,28 @@ namespace Trellcko.Gameplay.QuestLogic
         private void OnDayCompleted()
         {
             PlayerMovement.IsEnabled = PlayerRotation.IsEnabled = false;
-            if (_questSystem.Day == 0)
-            {
-                _finishDayUI.Hide(() => PlayerMovement.IsEnabled = PlayerRotation.IsEnabled = true);
-                return;
-            }
             
-            _finishDayUI.ShowAndHide(_questSystem.Day + 1, () =>
+            _finishDayUI.ShowUI(-1, () =>
             {
+                _gameUI.gameObject.SetActive(false);
+                _cinematic[_questSystem.Day].Play();
+                _cinematic[_questSystem.Day].Completed += OnCinematicCompleted;
+                _finishDayUI.HideUI();
+            });
+        }
+
+        private void OnCinematicCompleted()
+        {
+            _cinematic[_questSystem.Day].Completed -= OnCinematicCompleted;
+            _gameUI.gameObject.SetActive(true);
+            _finishDayUI.ShowUI(_questSystem.Day + 1, () =>
+            {
+                _cinematic[_questSystem.Day].DisableObjects();
                 _questSystem.StartNextDay();
-                PlayerMovement.IsEnabled = PlayerRotation.IsEnabled = true;
+                _finishDayUI.HideUI(() =>
+                {
+                    PlayerMovement.IsEnabled = PlayerRotation.IsEnabled = true;
+                });
             });
         }
     }

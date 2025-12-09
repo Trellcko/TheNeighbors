@@ -9,5 +9,6 @@ namespace Trellcko.Gameplay.QuestLogic
         event Action DayCompleted;
         event Action DayStarted;
         event Action AllDaysCompleted;
+        void StartNextDay();
     }
 }

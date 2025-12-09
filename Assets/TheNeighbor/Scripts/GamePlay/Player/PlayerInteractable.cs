@@ -59,6 +59,7 @@ namespace Trellcko.Gameplay.Player
             {
                 if (questInteractable.IsInteractable)
                 {
+                    Debug.Log(questInteractable.InteractableOutline.name +" Interact");
                     questInteractable.InteractableOutline.EnableSelectOutline();
                     _lastInteractable = questInteractable;
                 }
@@ -92,9 +93,9 @@ namespace Trellcko.Gameplay.Player
 
         private void OnInteractButtonClicked()
         {
-            _lastInteractable?.InteractableOutline.EnableInteractOutline();
             if (TryGetInteractable(out IInteractable questInteractable))
             {
+                _lastInteractable?.InteractableOutline.EnableInteractOutline();
                 if(questInteractable.TryInteract(out QuestItem tempItem, _item))
                 {
                     _playerBringing.SetItem(QuestItem.None);
