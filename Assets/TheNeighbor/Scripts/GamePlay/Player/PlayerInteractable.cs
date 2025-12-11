@@ -95,7 +95,9 @@ namespace Trellcko.Gameplay.Player
         {
             if (TryGetInteractable(out IInteractable questInteractable))
             {
-                _lastInteractable?.InteractableOutline.EnableInteractOutline();
+                if(_lastInteractable == questInteractable && _lastInteractable.IsInteractable)
+                    _lastInteractable?.InteractableOutline.EnableSelectOutline();
+                
                 if(questInteractable.TryInteract(out QuestItem tempItem, _item))
                 {
                     _playerBringing.SetItem(QuestItem.None);

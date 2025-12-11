@@ -15,13 +15,15 @@ namespace Trellcko.Gameplay.QuestLogic
         private GameUI _gameUI;
         private PlayerFacade _player;
         private IQuestSystem _questSystem;
+        private IDayResetting _dayResetting;
 
         private PlayerMovement PlayerMovement => _player.PlayerMovement;
         private PlayerRotation PlayerRotation => _player.PlayerRotation;
 
         [Inject]
-        private void Construct(IQuestSystem questSystem, PlayerFacade player, FinishDayUI finishDayUI, GameUI gameUI)
+        private void Construct(IQuestSystem questSystem, IDayResetting dayResetting, PlayerFacade player, FinishDayUI finishDayUI, GameUI gameUI)
         {
+            _dayResetting = dayResetting;
             _player = player;
             _questSystem = questSystem;
             _finishDayUI = finishDayUI;
@@ -57,6 +59,7 @@ namespace Trellcko.Gameplay.QuestLogic
             _gameUI.gameObject.SetActive(true);
             _finishDayUI.ShowUI(_questSystem.Day + 1, () =>
             {
+                _dayResetting.ResetItemsFor(_questSystem.Day + 1);
                 _cinematic[_questSystem.Day].DisableObjects();
                 _questSystem.StartNextDay();
                 _finishDayUI.HideUI(() =>

@@ -13,14 +13,16 @@ namespace Trellcko.Gameplay.QuestLogic
         
         [SerializeField] private AudioSource _audioSource;
 
-        [SerializeField] private bool _disableAfterGetting;
+        [SerializeField] private AfterInteractionAction _afterInteractionAction;
         public event Action Interacted;
         public bool IsInteractable { get; private set; }
         
         private MeshRenderer _meshRenderer;
+        private Collider _collider;
 
         private void Awake()
         {
+            _collider = GetComponent<Collider>();
             _meshRenderer = GetComponent<MeshRenderer>();
         }
 
@@ -42,13 +44,33 @@ namespace Trellcko.Gameplay.QuestLogic
                 _audioSource?.Play();
             IsInteractable = false;
             InteractableOutline.Disable();
-            if (_disableAfterGetting)
-            {
-                _meshRenderer.enabled = false;
-            }
+
+            DoAfterInteractionAction();
 
             return true;
         }
 
+        private void DoAfterInteractionAction()
+        {
+            switch (_afterInteractionAction)
+            {
+                case AfterInteractionAction.None:
+                    break;
+                case AfterInteractionAction.DisableVisual:
+                    _meshRenderer.enabled = false;
+                    break;
+                case AfterInteractionAction.DisableCollider:
+                    _collider.enabled = false;
+                    break;
+                case AfterInteractionAction.DisableVisualAndCollider:
+                {
+                    _meshRenderer.enabled = false;
+                    _collider.enabled = false;
+                }
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
     }
 }
