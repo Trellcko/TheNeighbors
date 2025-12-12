@@ -18,7 +18,6 @@ namespace Trellcko.Gameplay.Interactable
 
         private PlayerFacade _playerFacade;
         private Vector3 _defaultAngel;
-        private Tween _tween;
 
         private const float OpenTime = 3f;
 
@@ -44,7 +43,7 @@ namespace Trellcko.Gameplay.Interactable
                 Vector3 targetAngel = _defaultAngel;
                 targetAngel.y = angel;
                 _interactAudio.Play();
-                _tween = transform.DOLocalRotate(targetAngel, OpenTime)
+                transform.DOLocalRotate(targetAngel, OpenTime)
                     .OnComplete(() => { _goCollider.enabled = false; });
 
                 return true;
@@ -56,6 +55,8 @@ namespace Trellcko.Gameplay.Interactable
         public void ReturnToInitImmediately()
         {
             transform.localRotation = Quaternion.Euler(_defaultAngel);
+            IsInteractable = true;
+            _goCollider.enabled = true;
         }
 
         public void ReturnToInit()
@@ -64,8 +65,8 @@ namespace Trellcko.Gameplay.Interactable
                 return;
 
             _interactAudio.Play();
-            _goCollider.enabled = false;
-            _tween = transform.DOLocalRotate(_defaultAngel, OpenTime).OnComplete(() => IsInteractable = true);
+            _goCollider.enabled = true;
+            transform.DOLocalRotate(_defaultAngel, OpenTime).OnComplete(() => IsInteractable = true);
         }
 
         private float GetOpenAngel()

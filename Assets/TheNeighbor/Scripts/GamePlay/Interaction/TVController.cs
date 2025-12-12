@@ -32,7 +32,7 @@ namespace Trellcko.Gameplay
             {
                 TurnOn();
             }
-
+            
             return true;
         }
 

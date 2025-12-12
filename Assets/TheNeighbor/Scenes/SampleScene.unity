@@ -637,12 +637,18 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8068073526183931155, guid: bfaca96a9a87f7c49a577034a0d346ed, type: 3}
       insertIndex: -1
       addedObject: {fileID: 473981102}
+    - targetCorrespondingSourceObject: {fileID: -8068073526183931155, guid: bfaca96a9a87f7c49a577034a0d346ed, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 473981103}
     - targetCorrespondingSourceObject: {fileID: 5092708244707826562, guid: bfaca96a9a87f7c49a577034a0d346ed, type: 3}
       insertIndex: -1
       addedObject: {fileID: 473981101}
     - targetCorrespondingSourceObject: {fileID: 5092708244707826562, guid: bfaca96a9a87f7c49a577034a0d346ed, type: 3}
       insertIndex: -1
       addedObject: {fileID: 473981106}
+    - targetCorrespondingSourceObject: {fileID: 5092708244707826562, guid: bfaca96a9a87f7c49a577034a0d346ed, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 494421175}
     - targetCorrespondingSourceObject: {fileID: -942246062387481913, guid: bfaca96a9a87f7c49a577034a0d346ed, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2088984385}
@@ -1213,6 +1219,7 @@ Transform:
   m_Children:
   - {fileID: 1006877421}
   - {fileID: 1501233625}
+  - {fileID: 1017865191}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &30703612
@@ -3856,6 +3863,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &473981103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 473981086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4f2a5482b5153b48b1f6e34019373dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _door: {fileID: 473981092}
 --- !u!95 &473981106
 Animator:
   serializedVersion: 7
@@ -3883,6 +3903,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2735861635645939215, guid: 32d1b9e65583b7d4eabe27c38a6f10fa, type: 3}
   m_PrefabInstance: {fileID: 8182443052373615523}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &494421174 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8135426111661466322, guid: bfaca96a9a87f7c49a577034a0d346ed, type: 3}
+  m_PrefabInstance: {fileID: 2745979}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &494421175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 473981085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb1a5d94fb014c52be1c409507483b7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _defaultAngel: {x: -90, y: 0, z: 88.922}
+  _target: {fileID: 494421174}
 --- !u!114 &531496697
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5946,6 +5985,59 @@ Transform:
   - {fileID: 488447614}
   m_Father: {fileID: 24846789}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1017865190
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1017865191}
+  - component: {fileID: 1017865192}
+  m_Layer: 7
+  m_Name: Bed
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1017865191
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1017865190}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.50000006, y: -0.49999997, z: -0.50000006, w: 0.49999997}
+  m_LocalPosition: {x: -2.0924215, y: 0.43621814, z: 6.8240204}
+  m_LocalScale: {x: 97.86815, y: 250, z: 53.06807}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 24846789}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1017865192
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1017865190}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.048782412, y: 0.01573316, z: 0.019999998}
+  m_Center: {x: 0.010787009, y: 0.00000001071021, z: -0.0000000037252903}
 --- !u!1 &1071597048
 GameObject:
   m_ObjectHideFlags: 0
@@ -6589,7 +6681,7 @@ Transform:
   m_GameObject: {fileID: 1150810133}
   serializedVersion: 2
   m_LocalRotation: {x: 0.008150688, y: -0.9960866, z: 0.078898475, w: -0.038988665}
-  m_LocalPosition: {x: -12.3, y: 1.86, z: -1.02}
+  m_LocalPosition: {x: -12.3, y: 2.41, z: -1.02}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6883,7 +6975,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1239929710}
   - component: {fileID: 1239929709}
-  - component: {fileID: 1239929711}
   m_Layer: 0
   m_Name: QuestSystem
   m_TagString: Untagged
@@ -6907,14 +6998,14 @@ MonoBehaviour:
   - <Quests>k__BackingField:
     - <Description>k__BackingField: Make the bed
       <QuestInteractable>k__BackingField: {fileID: 1077448895}
-    - <Description>k__BackingField: Take Clothes
-      <QuestInteractable>k__BackingField: {fileID: 2745984}
-    - <Description>k__BackingField: Put into cabinet
-      <QuestInteractable>k__BackingField: {fileID: 168140435}
     - <Description>k__BackingField: Get Mop
       <QuestInteractable>k__BackingField: {fileID: 2088984385}
     - <Description>k__BackingField: Clean Up
       <QuestInteractable>k__BackingField: {fileID: 2088984381}
+    - <Description>k__BackingField: Take Clothes
+      <QuestInteractable>k__BackingField: {fileID: 2745984}
+    - <Description>k__BackingField: Put into cabinet
+      <QuestInteractable>k__BackingField: {fileID: 168140435}
     - <Description>k__BackingField: "Get Watering \u0421an"
       <QuestInteractable>k__BackingField: {fileID: 420967502}
     - <Description>k__BackingField: To Water Flowers
@@ -6944,36 +7035,6 @@ Transform:
   - {fileID: 2074123148}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1239929711
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1239929708}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Events:
-    m_Signals:
-    - {fileID: 11400000, guid: 372d36fff37c12b4087e966c003b100c, type: 2}
-    m_Events:
-    - m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1239929708}
-          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_MethodName: 
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: 
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1 &1252536460
 GameObject:
   m_ObjectHideFlags: 0
@@ -14117,7 +14178,7 @@ PlayableDirector:
   - key: {fileID: 102262273082794519, guid: a9c5e3dce04a1dc46a6f08ec61be3abd, type: 2}
     value: {fileID: 473981101}
   - key: {fileID: 8457256498212531641, guid: a9c5e3dce04a1dc46a6f08ec61be3abd, type: 2}
-    value: {fileID: 1239929711}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References:
     - ddf4d17d82063ba47963b3b772bdc81e: {fileID: 1150810136}
@@ -14553,6 +14614,8 @@ MonoBehaviour:
     - {fileID: 824430057}
     - {fileID: 1270358453}
     - {fileID: 389877167}
+    - {fileID: 494421175}
+    - {fileID: 473981103}
 --- !u!1 &2088984378 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3472778375830378061, guid: bfaca96a9a87f7c49a577034a0d346ed, type: 3}

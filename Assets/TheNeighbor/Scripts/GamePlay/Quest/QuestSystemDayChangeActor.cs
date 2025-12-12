@@ -57,7 +57,7 @@ namespace Trellcko.Gameplay.QuestLogic
         {
             _cinematic[_questSystem.Day].Completed -= OnCinematicCompleted;
             _gameUI.gameObject.SetActive(true);
-            _finishDayUI.ShowUI(_questSystem.Day + 1, () =>
+            _finishDayUI.ShowUI(_questSystem.Day + 2, () =>
             {
                 _dayResetting.ResetItemsFor(_questSystem.Day + 1);
                 _cinematic[_questSystem.Day].DisableObjects();
