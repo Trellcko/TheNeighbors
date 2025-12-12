@@ -33,6 +33,7 @@ namespace Trellcko.Gameplay.QuestLogic
         private void Awake()
         {
             _questSystem.DayCompleted += OnDayCompleted;
+            _dayResetting.ResetItemsFor(0);
         }
 
         private void OnDestroy()
