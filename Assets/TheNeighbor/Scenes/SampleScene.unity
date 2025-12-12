@@ -3051,7 +3051,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4129566366618152694, guid: 69c22995174ef2d41b16c3db9694079f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.861
+      value: -0.998
       objectReference: {fileID: 0}
     - target: {fileID: 4129566366618152694, guid: 69c22995174ef2d41b16c3db9694079f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7226,9 +7226,9 @@ MonoBehaviour:
     - <Description>k__BackingField: Clean Up
       <QuestInteractable>k__BackingField: {fileID: 2147231534}
     - <Description>k__BackingField: Clean Up
-      <QuestInteractable>k__BackingField: {fileID: 415074205}
-    - <Description>k__BackingField: Clean Up
       <QuestInteractable>k__BackingField: {fileID: 2406337549653178318}
+    - <Description>k__BackingField: Clean Up
+      <QuestInteractable>k__BackingField: {fileID: 415074205}
     - <Description>k__BackingField: Clean Up
       <QuestInteractable>k__BackingField: {fileID: 155590302}
   - <Quests>k__BackingField:
@@ -15765,7 +15765,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4129566366618152694, guid: 69c22995174ef2d41b16c3db9694079f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.956
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 4129566366618152694, guid: 69c22995174ef2d41b16c3db9694079f, type: 3}
       propertyPath: m_LocalPosition.z
