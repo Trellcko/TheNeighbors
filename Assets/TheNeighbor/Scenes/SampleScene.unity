@@ -4732,7 +4732,7 @@ Transform:
   m_GameObject: {fileID: 685283557}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.667, y: 1.77, z: -23.85}
+  m_LocalPosition: {x: 0, y: 1.77, z: 0}
   m_LocalScale: {x: 1.5, y: 3.75, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -6169,7 +6169,7 @@ Transform:
   m_GameObject: {fileID: 997687894}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.466, y: -0.138, z: 15.3}
+  m_LocalPosition: {x: -11.61, y: -0.138, z: 9.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7224,13 +7224,29 @@ MonoBehaviour:
     - <Description>k__BackingField: Clean Up
       <QuestInteractable>k__BackingField: {fileID: 1590478315}
     - <Description>k__BackingField: Clean Up
-      <QuestInteractable>k__BackingField: {fileID: 2147231534}
-    - <Description>k__BackingField: Clean Up
       <QuestInteractable>k__BackingField: {fileID: 2406337549653178318}
+    - <Description>k__BackingField: Clean Up
+      <QuestInteractable>k__BackingField: {fileID: 2147231534}
     - <Description>k__BackingField: Clean Up
       <QuestInteractable>k__BackingField: {fileID: 415074205}
     - <Description>k__BackingField: Clean Up
       <QuestInteractable>k__BackingField: {fileID: 155590302}
+    - <Description>k__BackingField: Clean Up
+      <QuestInteractable>k__BackingField: {fileID: 2088984381}
+    - <Description>k__BackingField: Make the bed
+      <QuestInteractable>k__BackingField: {fileID: 1077448895}
+    - <Description>k__BackingField: Take Clothes
+      <QuestInteractable>k__BackingField: {fileID: 2745984}
+    - <Description>k__BackingField: Put into cabinet
+      <QuestInteractable>k__BackingField: {fileID: 168140435}
+    - <Description>k__BackingField: "Get Watering \u0421an"
+      <QuestInteractable>k__BackingField: {fileID: 420967502}
+    - <Description>k__BackingField: To Water Flowers
+      <QuestInteractable>k__BackingField: {fileID: 745235647}
+    - <Description>k__BackingField: Eat Cookies
+      <QuestInteractable>k__BackingField: {fileID: 77159339}
+    - <Description>k__BackingField: Go To Sleep
+      <QuestInteractable>k__BackingField: {fileID: 1226046538}
   - <Quests>k__BackingField:
     - <Description>k__BackingField: Make the bed
       <QuestInteractable>k__BackingField: {fileID: 1077448895}
@@ -14452,10 +14468,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c507d1dbcc407c14e949a7853cf41308, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lights:
-  - {fileID: 905564701}
-  - {fileID: 209381825}
-  - {fileID: 824773376}
+  _gameobjects:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 997687894}
   knocking: {fileID: 1455946575}
   _tvController: {fileID: 1672871965}
   teleport: {fileID: 1596573495}
@@ -15765,7 +15788,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4129566366618152694, guid: 69c22995174ef2d41b16c3db9694079f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1
+      value: -0.994
       objectReference: {fileID: 0}
     - target: {fileID: 4129566366618152694, guid: 69c22995174ef2d41b16c3db9694079f, type: 3}
       propertyPath: m_LocalPosition.z

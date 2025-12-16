@@ -17,12 +17,12 @@ namespace Trellcko.Gameplay.QuestLogic
         
         private void Awake()
         {
-            _questDays[0].Init();
             _questDays[0].AllQuestsCompleted += OnAllQuestsInDayCompleted;
         }
 
         private void Start()
         {
+            _questDays[0].Init();
             DayStarted?.Invoke();
         }
 
