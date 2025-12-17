@@ -8,9 +8,9 @@ namespace Trellcko.Gameplay.QuestLogic
     public class QuestsDayList
     {
         [field: SerializeField] public List<Quest> Quests { get; private set; }
-        public Quest CurrentQuest => Quests[_questIndex];
-        
-        private int _questIndex = 0;
+        public Quest CurrentQuest => Quests[QuestIndex];
+
+        public int QuestIndex { get; private set; }
 
         public event Action AllQuestsCompleted;
         public event Action QuestActivated;
@@ -22,22 +22,22 @@ namespace Trellcko.Gameplay.QuestLogic
             {
                 quest.Completed += OnQuestCompleted;
             }
-            Debug.Log("Activated quest " +_questIndex );
+            Debug.Log("Activated quest " +QuestIndex );
             CurrentQuest.Activate();
             QuestActivated?.Invoke();
         }
 
         private void OnQuestCompleted()
         {
-            Debug.Log("oNqUEST cOMPLETED " + _questIndex);
+            Debug.Log("oNqUEST cOMPLETED " + QuestIndex);
             CurrentQuest.Completed -= OnQuestCompleted;
             BeforeQuestActivated?.Invoke();
-            if (_questIndex == Quests.Count - 1)
+            if (QuestIndex == Quests.Count - 1)
             {
                 AllQuestsCompleted?.Invoke();
                 return;
             }
-            _questIndex++;
+            QuestIndex++;
             CurrentQuest.Activate();
             QuestActivated?.Invoke();
         }
