@@ -1,24 +1,27 @@
+using System;
 using System.Collections;
+using Trellcko.Gameplay.QuestLogic;
 using UnityEngine;
 
 namespace Trellcko.Gameplay.Trigger
 {
    public abstract class BaseTrigger : MonoBehaviour
    {
-      [SerializeField] private TriggerActivation _activation;
+      [SerializeField] private TriggerActivator _activator;
       [SerializeField] private float _delay;
-
-      private bool _isVisible = false;
-      
-      private void OnBecameVisible()
+      private void OnEnable()
       {
-         if (_isVisible)
-         {
-            if (_activation == TriggerActivation.WhenSee)
-            {
-               StartCoroutine(ActivateCorun());
-            }
-         }
+         _activator.Activated += OnTriggerActivatorInvoked;
+      }
+
+      private void OnDisable()
+      {
+         _activator.Activated -= OnTriggerActivatorInvoked;
+      }
+
+      private void OnTriggerActivatorInvoked()
+      {
+         StartCoroutine(ActivateCorun());
       }
 
       private IEnumerator ActivateCorun()
@@ -26,23 +29,15 @@ namespace Trellcko.Gameplay.Trigger
          yield return new WaitForSeconds(_delay);
          OnActivate();
       }
-
-
-
+      
       public void MakeVisible()
       {
          OnMakeVisible();
-         _isVisible = true;
       }
       
       protected abstract void OnMakeVisible();
       
       protected abstract void OnActivate();
       
-   }
-
-   public enum TriggerActivation
-   {
-      WhenSee
    }
 }
