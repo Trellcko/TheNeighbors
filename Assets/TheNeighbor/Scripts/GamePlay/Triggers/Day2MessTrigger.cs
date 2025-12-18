@@ -11,6 +11,7 @@ namespace Trellcko.Gameplay.Trigger
         [SerializeField] private Transform _monsterPoint;
         
         [SerializeField] private Light[] _lights;
+        [SerializeField] private Light _lightAtTheEnd;
         private IMusicController _musicController;
 
         [Inject]
@@ -30,7 +31,7 @@ namespace Trellcko.Gameplay.Trigger
             {
                 mess.SetActive(true);
             }
-            
+            _lightAtTheEnd.enabled = false;
             _monster.SetActive(true);
             _monster.transform.position = _monsterPoint.position;
         }
