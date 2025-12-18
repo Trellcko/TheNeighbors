@@ -26,6 +26,7 @@ namespace Trellcko.Gameplay.Trigger
 
       private IEnumerator ActivateCorun()
       {
+         OnBeforeActivate();
          yield return new WaitForSeconds(_delay);
          OnActivate();
       }
@@ -34,6 +35,8 @@ namespace Trellcko.Gameplay.Trigger
       {
          OnMakeVisible();
       }
+      
+      protected abstract void OnBeforeActivate();
       
       protected abstract void OnMakeVisible();
       

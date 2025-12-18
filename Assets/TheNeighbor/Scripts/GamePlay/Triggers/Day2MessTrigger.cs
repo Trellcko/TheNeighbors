@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using Trellcko.Core.Audio;
+using UnityEngine;
+using Zenject;
 
 namespace Trellcko.Gameplay.Trigger
 {
@@ -8,8 +10,20 @@ namespace Trellcko.Gameplay.Trigger
         [SerializeField] private GameObject _monster;
         [SerializeField] private Transform _monsterPoint;
         
-        [SerializeField] private Light _light;
-        
+        [SerializeField] private Light[] _lights;
+        private IMusicController _musicController;
+
+        [Inject]
+        private void Construct(IMusicController musicController)
+        {
+            _musicController = musicController;
+        }
+
+        protected override void OnBeforeActivate()
+        {
+            _musicController.PlayShockMoment();
+        }
+
         protected override void OnMakeVisible()
         {
             foreach (GameObject mess in _mess)
@@ -29,7 +43,10 @@ namespace Trellcko.Gameplay.Trigger
             }
             _monster.SetActive(false);
             _monster.transform.position = _monsterPoint.position;
-            _light.enabled = false;
+            foreach (Light light1 in _lights)
+            {
+                light1.enabled = false;   
+            }
         }
     }
 }

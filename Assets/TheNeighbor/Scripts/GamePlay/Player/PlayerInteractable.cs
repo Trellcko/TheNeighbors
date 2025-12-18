@@ -1,4 +1,3 @@
-using System;
 using TheNeighbor.Scripts.Constants;
 using Trellcko.Core.Input;
 using Trellcko.Gameplay.QuestLogic;
@@ -59,7 +58,6 @@ namespace Trellcko.Gameplay.Player
             {
                 if (questInteractable.IsInteractable)
                 {
-                    Debug.Log(questInteractable.InteractableOutline.name +" Interact");
                     questInteractable.InteractableOutline.EnableSelectOutline();
                     _lastInteractable = questInteractable;
                 }
