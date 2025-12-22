@@ -22,9 +22,22 @@ namespace Trellcko.Gameplay.QuestLogic
         private void OnEnable()
         {
             _questSystem.CurrentDayList.QuestActivated += OnQuestActivated;
+            _questSystem.DayStarted += OnDayStarted;
+            _questSystem.DayCompleted += OnDayCompleted;
         }
 
         private void OnDisable()
+        {
+            _questSystem.CurrentDayList.QuestActivated -= OnQuestActivated;
+            _questSystem.DayStarted -= OnDayStarted;
+        }
+
+        private void OnDayStarted()
+        {
+            _questSystem.CurrentDayList.QuestActivated += OnQuestActivated;
+        }
+
+        private void OnDayCompleted()
         {
             _questSystem.CurrentDayList.QuestActivated -= OnQuestActivated;
         }

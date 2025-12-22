@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Trellcko.Gameplay.Cinematic;
 using Trellcko.Gameplay.Player;
@@ -44,7 +45,26 @@ namespace Trellcko.Gameplay.QuestLogic
         private void OnDayCompleted()
         {
             PlayerMovement.IsEnabled = PlayerRotation.IsEnabled = false;
-            
+
+            if (_cinematic[_questSystem.Day])
+            {
+                ShowCinematic();
+            }
+            else
+            {
+                AnimationStartNextDay();
+            }
+        }
+
+        private void OnCinematicCompleted()
+        {
+            _cinematic[_questSystem.Day].Completed -= OnCinematicCompleted;
+            _gameUI.gameObject.SetActive(true);
+            AnimationStartNextDay(_cinematic[_questSystem.Day].DisableObjects);
+        }
+
+        private void ShowCinematic()
+        {
             _finishDayUI.ShowUI(-1, () =>
             {
                 _gameUI.gameObject.SetActive(false);
@@ -54,19 +74,17 @@ namespace Trellcko.Gameplay.QuestLogic
             });
         }
 
-        private void OnCinematicCompleted()
+        private void AnimationStartNextDay(Action callback = null)
         {
-            _cinematic[_questSystem.Day].Completed -= OnCinematicCompleted;
-            _gameUI.gameObject.SetActive(true);
             _finishDayUI.ShowUI(_questSystem.Day + 2, () =>
             {
                 _dayResetting.ResetItemsFor(_questSystem.Day + 1);
-                _cinematic[_questSystem.Day].DisableObjects();
                 _questSystem.StartNextDay();
                 _finishDayUI.HideUI(() =>
                 {
                     PlayerMovement.IsEnabled = PlayerRotation.IsEnabled = true;
                 });
+                callback?.Invoke();
             });
         }
     }

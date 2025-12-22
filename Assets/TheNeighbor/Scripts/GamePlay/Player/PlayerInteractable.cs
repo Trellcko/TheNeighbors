@@ -1,3 +1,4 @@
+using System;
 using TheNeighbor.Scripts.Constants;
 using Trellcko.Core.Input;
 using Trellcko.Gameplay.QuestLogic;
@@ -75,18 +76,21 @@ namespace Trellcko.Gameplay.Player
         {
             questInteractable = null;
             Ray ray = new(_camera.transform.position, _camera.transform.forward);
-
+            Debug.DrawRay(_camera.transform.position, _camera.transform.forward * _rayLength, Color.red);
             int count = Physics.RaycastNonAlloc(ray, _hits, _rayLength, Layers.Interactable);
-            
+            float maxDistance = float.MaxValue;
             for (int i = 0; i < count; i++)
             {
-                if (_hits[i].transform.TryGetComponent(out questInteractable))
+                if (_hits[i].distance < maxDistance)
                 {
-                    return true;
+                    if (_hits[i].transform.TryGetComponent(out questInteractable))
+                    {
+                        maxDistance = _hits[i].distance;
+                    }
                 }
             }
-
-            return false;
+        
+            return questInteractable != null;
         }
 
         private void OnInteractButtonClicked()

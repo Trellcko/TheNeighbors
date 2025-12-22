@@ -5,7 +5,7 @@ namespace Trellcko.Gameplay.QuestLogic
 {
    public class DayResetting : MonoBehaviour, IDayResetting
    {
-      [SerializeField] private Transform _player;
+      [SerializeField] private Rigidbody _player;
 
       [SerializeField] private Transform _playerSpawnPosition;
 
@@ -13,7 +13,7 @@ namespace Trellcko.Gameplay.QuestLogic
 
       public void ResetItemsFor(int day)
       {
-         _player.position = _playerSpawnPosition.position;
+         _player.MovePosition(_playerSpawnPosition.position);
 
          foreach (ResetObject resetForObject in _resetObjectData[day].Items)
          {

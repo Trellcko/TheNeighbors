@@ -6087,6 +6087,7 @@ GameObject:
   - component: {fileID: 824773379}
   - component: {fileID: 824773378}
   - component: {fileID: 824773377}
+  - component: {fileID: 824773380}
   m_Layer: 0
   m_Name: Point Light (3)
   m_TagString: Untagged
@@ -6197,6 +6198,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 654105871}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &824773380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 824773376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73f5ffb1fecef23469d0c81bfc29ffe8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _light: {fileID: 824773378}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -6359,6 +6373,7 @@ GameObject:
   - component: {fileID: 905564704}
   - component: {fileID: 905564703}
   - component: {fileID: 905564702}
+  - component: {fileID: 905564705}
   m_Layer: 0
   m_Name: Point Light (5)
   m_TagString: Untagged
@@ -6469,6 +6484,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 654105871}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &905564705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 905564701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73f5ffb1fecef23469d0c81bfc29ffe8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _light: {fileID: 905564703}
 --- !u!1 &918332511
 GameObject:
   m_ObjectHideFlags: 0
@@ -8348,6 +8376,25 @@ MonoBehaviour:
   - <Quests>k__BackingField:
     - <Description>k__BackingField: Make the bed
       <QuestInteractable>k__BackingField: {fileID: 1077448895}
+    - <Description>k__BackingField: Get Mop
+      <QuestInteractable>k__BackingField: {fileID: 2088984385}
+    - <Description>k__BackingField: Clean Up
+      <QuestInteractable>k__BackingField: {fileID: 2088984381}
+    - <Description>k__BackingField: Take Clothes
+      <QuestInteractable>k__BackingField: {fileID: 2745984}
+    - <Description>k__BackingField: Put into cabinet
+      <QuestInteractable>k__BackingField: {fileID: 168140435}
+    - <Description>k__BackingField: "Get Watering \u0421an"
+      <QuestInteractable>k__BackingField: {fileID: 420967502}
+    - <Description>k__BackingField: To Water Flowers
+      <QuestInteractable>k__BackingField: {fileID: 745235647}
+    - <Description>k__BackingField: Eat Cookies
+      <QuestInteractable>k__BackingField: {fileID: 77159339}
+    - <Description>k__BackingField: Go To Sleep
+      <QuestInteractable>k__BackingField: {fileID: 1226046538}
+  - <Quests>k__BackingField:
+    - <Description>k__BackingField: Make the bed
+      <QuestInteractable>k__BackingField: {fileID: 1077448895}
     - <Description>k__BackingField: Take Clothes
       <QuestInteractable>k__BackingField: {fileID: 2745984}
     - <Description>k__BackingField: Put into cabinet
@@ -8377,10 +8424,6 @@ MonoBehaviour:
   - <Quests>k__BackingField:
     - <Description>k__BackingField: Make the bed
       <QuestInteractable>k__BackingField: {fileID: 1077448895}
-    - <Description>k__BackingField: Get Mop
-      <QuestInteractable>k__BackingField: {fileID: 2088984385}
-    - <Description>k__BackingField: Clean Up
-      <QuestInteractable>k__BackingField: {fileID: 2088984381}
     - <Description>k__BackingField: Take Clothes
       <QuestInteractable>k__BackingField: {fileID: 2745984}
     - <Description>k__BackingField: Put into cabinet
@@ -8391,6 +8434,20 @@ MonoBehaviour:
       <QuestInteractable>k__BackingField: {fileID: 745235647}
     - <Description>k__BackingField: Eat Cookies
       <QuestInteractable>k__BackingField: {fileID: 77159339}
+    - <Description>k__BackingField: Get Mop
+      <QuestInteractable>k__BackingField: {fileID: 2088984385}
+    - <Description>k__BackingField: Clean Up
+      <QuestInteractable>k__BackingField: {fileID: 1590478315}
+    - <Description>k__BackingField: Clean Up
+      <QuestInteractable>k__BackingField: {fileID: 2406337549653178318}
+    - <Description>k__BackingField: Clean Up
+      <QuestInteractable>k__BackingField: {fileID: 2147231534}
+    - <Description>k__BackingField: Clean Up
+      <QuestInteractable>k__BackingField: {fileID: 415074205}
+    - <Description>k__BackingField: Clean Up
+      <QuestInteractable>k__BackingField: {fileID: 155590302}
+    - <Description>k__BackingField: Clean Up
+      <QuestInteractable>k__BackingField: {fileID: 2088984381}
     - <Description>k__BackingField: Go To Sleep
       <QuestInteractable>k__BackingField: {fileID: 1226046538}
 --- !u!4 &1239929710
@@ -15141,6 +15198,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cinematic:
   - {fileID: 1920028249}
+  - {fileID: 0}
 --- !u!4 &1645191592 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4889201344145374300, guid: bfaca96a9a87f7c49a577034a0d346ed, type: 3}
@@ -15957,6 +16015,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _dayTriggersData:
+  - _dayTriggersData: []
   - _dayTriggersData:
     - QuestIndex: 13
       BaseTrigger: {fileID: 228330180}
@@ -16663,23 +16722,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d96bd12b2ffc35040b45531377820a71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 862641728}
+  _player: {fileID: 862641730}
   _playerSpawnPosition: {fileID: 316921628}
   _resetObjectData:
+  - <Items>k__BackingField: []
   - <Items>k__BackingField:
+    - {fileID: 473981103}
     - {fileID: 923647984}
     - {fileID: 1413081184}
     - {fileID: 824430057}
-    - {fileID: 1270358453}
     - {fileID: 389877167}
     - {fileID: 494421175}
-    - {fileID: 473981103}
     - {fileID: 1590478314}
     - {fileID: 155590301}
     - {fileID: 2147231533}
     - {fileID: 415074204}
     - {fileID: 2406337549653178317}
-  - <Items>k__BackingField: []
+    - {fileID: 1270358453}
+  - <Items>k__BackingField:
+    - {fileID: 209381829}
+    - {fileID: 905564705}
+    - {fileID: 824773380}
+    - {fileID: 473981103}
+    - {fileID: 923647984}
+    - {fileID: 1413081184}
+    - {fileID: 824430057}
+    - {fileID: 389877167}
+    - {fileID: 494421175}
+    - {fileID: 1590478314}
+    - {fileID: 155590301}
+    - {fileID: 2147231533}
+    - {fileID: 415074204}
+    - {fileID: 2406337549653178317}
+    - {fileID: 1270358453}
 --- !u!1 &2088984378 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3472778375830378061, guid: bfaca96a9a87f7c49a577034a0d346ed, type: 3}
