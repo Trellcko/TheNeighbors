@@ -1,5 +1,3 @@
-using Trellcko.Gameplay.Interactable;
-using Trellcko.Gameplay.QuestLogic;
 using UnityEngine;
 using UnityEngine.Playables;
 

@@ -43,6 +43,7 @@ namespace Trellcko.Gameplay.Interactable
                 Vector3 targetAngel = _defaultAngel;
                 targetAngel.y = angel;
                 _interactAudio.Play();
+                Interacted?.Invoke();
                 transform.DOLocalRotate(targetAngel, OpenTime)
                     .OnComplete(() => { _goCollider.enabled = false; });
 

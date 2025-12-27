@@ -3,14 +3,9 @@ using UnityEngine;
 
 namespace Trellcko.Gameplay.QuestLogic
 {
-    public class WhenObjectHaveSeenActivator : TriggerActivator
+    public class WhenObjectHaveSeenNotifier : Notifier
     {       
         [SerializeField] private BecomeVisibleInvoker _becomeVisibleInvoker;
-
-        private void OnEnable()
-        {
-            _becomeVisibleInvoker.BecameVisible += OnBecameVisible;
-        }
 
         private void OnDisable()
         {
@@ -19,7 +14,13 @@ namespace Trellcko.Gameplay.QuestLogic
 
         private void OnBecameVisible()
         {
-            InvokeActivated();
+            InvokeNotified();
+            _becomeVisibleInvoker.BecameVisible -= OnBecameVisible;
+        }
+
+        public override void StartWatching()
+        {            
+            _becomeVisibleInvoker.BecameVisible += OnBecameVisible;
         }
     }
 }

@@ -3,13 +3,14 @@ using UnityEngine;
 
 namespace Trellcko.Gameplay.QuestLogic
 {
-    public abstract class TriggerActivator : MonoBehaviour
+    public abstract class Notifier : MonoBehaviour
     {
         public event Action Activated;
-
-        protected void InvokeActivated()
+        protected void InvokeNotified()
         {
             Activated?.Invoke();
         }
+
+        public abstract void StartWatching();
     }
 }

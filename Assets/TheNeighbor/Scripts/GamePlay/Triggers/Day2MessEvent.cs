@@ -4,7 +4,7 @@ using Zenject;
 
 namespace Trellcko.Gameplay.Trigger
 {
-    public class Day2MessTrigger : BaseTrigger
+    public class Day2MessEvent : BaseEvent
     {
         [SerializeField] private GameObject[] _mess;
         [SerializeField] private GameObject _monster;
@@ -20,7 +20,7 @@ namespace Trellcko.Gameplay.Trigger
             _musicController = musicController;
         }
 
-        protected override void OnBeforeActivate()
+        protected override void OnBeforeNotifierInvoked()
         {
             _musicController.PlayShockMoment();
         }
@@ -36,7 +36,7 @@ namespace Trellcko.Gameplay.Trigger
             _monster.transform.position = _monsterPoint.position;
         }
 
-        protected override void OnActivate()
+        protected override void OnNotifierInvokeHandle()
         {
             foreach (GameObject mess in _mess)
             {

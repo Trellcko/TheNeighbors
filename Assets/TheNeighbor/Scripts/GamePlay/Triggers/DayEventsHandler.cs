@@ -7,9 +7,9 @@ using Zenject;
 
 namespace Trellcko.Gameplay.QuestLogic
 {
-    public class DayTriggersHandler : MonoBehaviour
+    public class DayEventsHandler : MonoBehaviour
     {
-        [SerializeField] private List<DayTriggerList> _dayTriggersData;
+        [SerializeField] private List<DayEventsList> _dayTriggersData;
         
         private IQuestSystem _questSystem;
 
@@ -35,6 +35,10 @@ namespace Trellcko.Gameplay.QuestLogic
         private void OnDayStarted()
         {
             _questSystem.CurrentDayList.QuestActivated += OnQuestActivated;
+            foreach (DayTriggerData dayTriggerData in _dayTriggersData[_questSystem.Day]._dayTriggersData)
+            {
+                dayTriggerData._baseEvent.Init(dayTriggerData._notifier);
+            }
         }
 
         private void OnDayCompleted()
@@ -46,14 +50,18 @@ namespace Trellcko.Gameplay.QuestLogic
         {
             if (_dayTriggersData.Count > _questSystem.Day)
             {
-                DayTriggerData data = _dayTriggersData[_questSystem.Day]._dayTriggersData.FirstOrDefault(x => x.QuestIndex == _questSystem.CurrentDayList.QuestIndex);
-                data?.BaseTrigger.MakeVisible();
+                List<DayTriggerData> data = _dayTriggersData[_questSystem.Day]._dayTriggersData.Where(x => x.QuestIndex == _questSystem.CurrentDayList.QuestIndex).ToList();
+                foreach (DayTriggerData dayTriggerData in data)
+                {
+                    dayTriggerData._notifier?.StartWatching();
+                    dayTriggerData?._baseEvent.MakeVisible();   
+                }
             }
         }
     }
     [Serializable]
 
-    public class DayTriggerList
+    public class DayEventsList
     {
         public List<DayTriggerData> _dayTriggersData;
     }
@@ -62,6 +70,7 @@ namespace Trellcko.Gameplay.QuestLogic
     public class DayTriggerData
     {
         public int QuestIndex;
-        public BaseTrigger BaseTrigger;
+        public BaseEvent _baseEvent;
+        public Notifier _notifier;
     }
 }
