@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Trellcko.Gameplay.Trigger;
+using Trellcko.Gameplay.Events;
 using UnityEngine;
 using Zenject;
 

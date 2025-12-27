@@ -1,5 +1,5 @@
 using Trellcko.Gameplay.Interactable;
-using Trellcko.Gameplay.Trigger;
+using Trellcko.Gameplay.Events;
 using UnityEngine;
 
 namespace Trellcko.Gameplay.Events

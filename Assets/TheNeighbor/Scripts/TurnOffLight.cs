@@ -1,44 +1,42 @@
-using System;
-using System.Collections.Generic;
-using Trellcko.Gameplay;
+using Trellcko.Gameplay.Events;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class TurnOffLight : MonoBehaviour
 {
-    [SerializeField] private GameObject[] _gameobjects;
-    [SerializeField] private AudioSource knocking;
+    [SerializeField] private TurnOffTheLightForTimeEvent _bedRoom;
+    [SerializeField] private TurnOnTelevisionEvent _television;
+    [SerializeField] private TurnOffTelevisionEvent _television2;
+    [SerializeField] private OpenTheDoorEvent _openDoor;
+    [SerializeField] private PlaySoundEvent _playSoundKnock;
+    [SerializeField] private PlaySoundEvent _playCroaksound;
 
-    [SerializeField] private TVController _tvController;
+    [SerializeField] private GameObject _monster;
+    [SerializeField] private Transform _teleport;
     
-    [SerializeField] private GameObject teleport;
-    [SerializeField] private GameObject monster;
-    [SerializeField] private GameObject cameraRotation;
-
     private void Update()
     {
-        if (Keyboard.current.digit1Key.wasPressedThisFrame)
+        if (Keyboard.current.numpad1Key.wasPressedThisFrame)
         {
-            foreach (var gameobject in _gameobjects)
-            {
-                gameobject.SetActive(true);
-            }
+            _television.MakeVisible();
         }
-        
-        if (Keyboard.current.digit4Key.wasPressedThisFrame)
+        else if (Keyboard.current.numpad2Key.wasPressedThisFrame)
         {
-            knocking.Play();
+            _television2.MakeVisible();
+            _playSoundKnock.MakeVisible();
         }
-        else if (Keyboard.current.digit5Key.wasPressedThisFrame)
+        else if (Keyboard.current.numpad3Key.wasPressedThisFrame)
         {
-            if(!_tvController.IsWorked)
-                _tvController.TurnOn();
-            else
-                _tvController.TurnOff();
+            _bedRoom.MakeVisible();
+            _openDoor.MakeVisible();
         }
-        else if (Keyboard.current.digit8Key.wasPressedThisFrame)
+        else if (Keyboard.current.numpad4Key.wasPressedThisFrame)
         {
-            cameraRotation.SetActive(!cameraRotation.activeSelf);
+            _playCroaksound.MakeVisible();
+        }
+        else if (Keyboard.current.numpad5Key.wasPressedThisFrame)
+        {
+            _monster.transform.position = _teleport.position;
         }
     }
 }

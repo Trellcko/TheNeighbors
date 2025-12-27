@@ -3,7 +3,7 @@ using System.Collections;
 using Trellcko.Gameplay.QuestLogic;
 using UnityEngine;
 
-namespace Trellcko.Gameplay.Trigger
+namespace Trellcko.Gameplay.Events
 {
    public abstract class BaseEvent : MonoBehaviour
    {

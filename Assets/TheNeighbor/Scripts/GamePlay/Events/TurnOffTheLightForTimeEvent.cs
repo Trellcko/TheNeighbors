@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-namespace Trellcko.Gameplay.Trigger
+namespace Trellcko.Gameplay.Events
 {
     public class TurnOffTheLightForTimeEvent : BaseEvent
     {

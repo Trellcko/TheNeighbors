@@ -2,7 +2,7 @@
 using UnityEngine;
 using Zenject;
 
-namespace Trellcko.Gameplay.Trigger
+namespace Trellcko.Gameplay.Events
 {
     public class Day2MessEvent : BaseEvent
     {
