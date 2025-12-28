@@ -11,6 +11,7 @@ namespace Trellcko.Gameplay
         
         [SerializeField] private Light _light;
         [SerializeField] private ParticleSystem _particle;
+        [SerializeField] private ParticleSystem _redParticle;
         [SerializeField] private AudioSource _audio;
 
         public bool IsWorked { get; private set; } = true;
@@ -39,8 +40,18 @@ namespace Trellcko.Gameplay
         public void TurnOn()
         {
             IsWorked = true;
+            _light.color = Color.white;
             _light.enabled = true;
             _particle.Play();
+            _audio.Play();
+        }
+
+        public void TurnOnRedMode()
+        {
+            IsWorked = true;
+            _light.color = Color.red;
+            _light.enabled = true;
+            _redParticle.Play();
             _audio.Play();
         }
 
@@ -48,6 +59,7 @@ namespace Trellcko.Gameplay
         {
             IsWorked = false;
             _light.enabled = false;
+            _redParticle.Stop();
             _particle.Stop();
             _audio.Stop();
         }
