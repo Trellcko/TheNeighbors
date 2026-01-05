@@ -5,11 +5,11 @@ namespace Trellcko.Core.Audio
 {
     public class AudioInstaller : MonoInstaller
     {
-        [SerializeField] private MusicController _musicController;
+        [SerializeField] private MainSoundController _mainSoundController;
         
         public override void InstallBindings()
         {
-            Container.Bind<IMusicController>().FromInstance(_musicController).AsSingle();
+            Container.Bind<ISoundController>().FromInstance(_mainSoundController).AsSingle();
         }
     }
 }

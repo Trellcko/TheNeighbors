@@ -12,17 +12,17 @@ namespace Trellcko.Gameplay.Events
         
         [SerializeField] private Light[] _lights;
         [SerializeField] private Light _lightAtTheEnd;
-        private IMusicController _musicController;
+        private ISoundController _soundController;
 
         [Inject]
-        private void Construct(IMusicController musicController)
+        private void Construct(ISoundController soundController)
         {
-            _musicController = musicController;
+            _soundController = soundController;
         }
 
         protected override void OnBeforeNotifierInvoked()
         {
-            _musicController.PlayShockMoment();
+            _soundController.PlayShockMoment();
         }
 
         protected override void OnMakeVisible()

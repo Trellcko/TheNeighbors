@@ -31,10 +31,10 @@ namespace Trellcko.Gameplay.QuestLogic
             _gameUI = gameUI;
         }
 
-        private void Awake()
+        private void Start()
         {
             _questSystem.DayCompleted += OnDayCompleted;
-            _dayResetting.ResetItemsFor(0);
+            _dayResetting.ResetItemsFor(_questSystem.Day);
         }
 
         private void OnDestroy()
