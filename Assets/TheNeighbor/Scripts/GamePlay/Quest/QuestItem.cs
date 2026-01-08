@@ -5,6 +5,7 @@
         None, 
         Clothes,
         Mop,
-        WaterThing
+        WaterThing,
+        Corpse
     }
 }

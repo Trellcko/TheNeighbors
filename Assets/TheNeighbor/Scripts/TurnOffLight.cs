@@ -16,27 +16,10 @@ public class TurnOffLight : MonoBehaviour
     
     private void Update()
     {
+       
         if (Keyboard.current.numpad1Key.wasPressedThisFrame)
         {
-            _television.MakeVisible();
-        }
-        else if (Keyboard.current.numpad2Key.wasPressedThisFrame)
-        {
-            _television2.MakeVisible();
-            _playSoundKnock.MakeVisible();
-        }
-        else if (Keyboard.current.numpad3Key.wasPressedThisFrame)
-        {
-            _bedRoom.MakeVisible();
-            _openDoor.MakeVisible();
-        }
-        else if (Keyboard.current.numpad4Key.wasPressedThisFrame)
-        {
-            _playCroaksound.MakeVisible();
-        }
-        else if (Keyboard.current.numpad5Key.wasPressedThisFrame)
-        {
-            _monster.transform.position = _teleport.position;
+            _monster.gameObject.SetActive(!_monster.activeSelf);
         }
     }
 }
