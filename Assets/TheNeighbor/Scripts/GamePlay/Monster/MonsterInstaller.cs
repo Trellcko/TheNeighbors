@@ -5,11 +5,11 @@ namespace Trellcko.Gameplay.Monster
 {
     public class MonsterInstaller : MonoInstaller
     {
-        [SerializeField] private MonsterContainer _monsterContainer;
+        [SerializeField] private MonsterFacade _monsterFacade;
 
         public override void InstallBindings()
         {
-            Container.Bind<MonsterContainer>().FromInstance(_monsterContainer).AsSingle();
+            Container.Bind<MonsterFacade>().FromInstance(_monsterFacade).AsSingle();
         }
     }
 }

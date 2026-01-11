@@ -6,5 +6,6 @@ namespace Trellcko.Gameplay.Player
   {
     [field: SerializeField] public PlayerMovement PlayerMovement { get; private set; }
     [field: SerializeField] public PlayerRotation PlayerRotation { get; private set; }
+    [field: SerializeField] public Bringing Bringing { get; private set; }
   }
 }

@@ -9,5 +9,6 @@ namespace Trellcko.Gameplay.Player
     {
         public Texture Sprite;
         public QuestItem Item;
+        public Vector3 Offset;
     }
 }
