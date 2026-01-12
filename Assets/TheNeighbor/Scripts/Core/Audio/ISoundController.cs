@@ -3,7 +3,7 @@
     public interface ISoundController
     {
         void PlayOst(Ost ost);
-        void PlayShockMoment();
+        void PlayShockMoment(bool playAfterAmbien = false);
         void StopPlayingAmbience();
         void PlayMonsterSound(MonsterSound monsterSound);
     }
