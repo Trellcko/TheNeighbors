@@ -5,6 +5,7 @@
         None = 0,
         DisableVisual = 1,
         DisableCollider = 2,
-        DisableVisualAndCollider = 3
+        DisableVisualAndCollider = 3,
+        PlayAnimation = 4,
     }
 }

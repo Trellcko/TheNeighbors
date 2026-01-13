@@ -12,7 +12,7 @@ namespace Trellcko.Gameplay.Player
         [SerializeField] private float _rayLength;
         [SerializeField] private Bringing _bringing;
         
-        public QuestItem _item;
+        private QuestItem _item;
         
         private IInputHandler _inputHandler;
 
@@ -47,6 +47,12 @@ namespace Trellcko.Gameplay.Player
             _camera = Camera.main;
         }
 
+        public void SetItem(QuestItem item)
+        {
+            _item = item;
+            _bringing.SetItem(item);
+        }
+        
         private void OnMoveInputInvoked(Vector2 obj)
         {
             CheckForSelectables();

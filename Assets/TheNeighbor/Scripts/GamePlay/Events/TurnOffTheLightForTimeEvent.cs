@@ -18,7 +18,7 @@ namespace Trellcko.Gameplay.Events
 
         private IEnumerator StartCorun()
         {
-
+            _currentTime = 0f;
             while (_currentCount < _winkingCounts)
             {
                 if (_currentTime > _winkingTime)
@@ -31,14 +31,8 @@ namespace Trellcko.Gameplay.Events
                 _currentTime += Time.deltaTime;
                 yield return null;
             }
-
-            _currentTime = 0f;
             DisableLights();
-            while (_currentTime < _withoutLightTime)
-            {
-                _currentTime += Time.deltaTime;
-                yield return null;
-            }
+            yield return new WaitForSeconds(_withoutLightTime);
 
             EnableLights();
         }

@@ -19,9 +19,14 @@ namespace Trellcko.Gameplay.QuestLogic
         
         private MeshRenderer _meshRenderer;
         private Collider _collider;
+        private Animator _animator;
 
         private void Awake()
         {
+            if (_afterInteractionAction == AfterInteractionAction.PlayAnimation)
+            {
+                _animator = GetComponent<Animator>();
+            }
             _collider = GetComponent<Collider>();
             _meshRenderer = GetComponent<MeshRenderer>();
         }
@@ -66,6 +71,11 @@ namespace Trellcko.Gameplay.QuestLogic
                 {
                     _meshRenderer.enabled = false;
                     _collider.enabled = false;
+                }
+                    break;
+                case AfterInteractionAction.PlayAnimation:
+                {
+                    _animator.enabled = true;
                 }
                     break;
                 default:

@@ -404,7 +404,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <PlayerMovement>k__BackingField: {fileID: 7804319668916312998}
   <PlayerRotation>k__BackingField: {fileID: 7751814594476643204}
-  <Bringing>k__BackingField: {fileID: 3026131629135842203}
+  <Interactable>k__BackingField: {fileID: 8939316499728763515}
 --- !u!1 &8288087536293028301
 GameObject:
   m_ObjectHideFlags: 0
@@ -451,4 +451,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rayLength: 2.5
   _bringing: {fileID: 3026131629135842203}
-  _item: 0

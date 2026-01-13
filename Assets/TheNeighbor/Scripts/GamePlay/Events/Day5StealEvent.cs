@@ -1,5 +1,6 @@
 using System.Collections;
 using Trellcko.Core.Audio;
+using Trellcko.Gameplay.Common;
 using Trellcko.Gameplay.Monster;
 using Trellcko.Gameplay.Player;
 using Trellcko.Gameplay.QuestLogic;
@@ -8,10 +9,11 @@ using Zenject;
 
 namespace Trellcko.Gameplay.Events
 {
-    public class Day5StealMopEvent : BaseEvent
+    public class Day5StealEvent : BaseEvent
     {
         [SerializeField] private Transform _monsterPoint;
         [SerializeField] private QuestInteractable _questInteractable;
+        [SerializeField] private QuestItem _item;
         
         private ISoundController _soundController;
         private PlayerFacade _playerFacade;
@@ -42,18 +44,19 @@ namespace Trellcko.Gameplay.Events
         private IEnumerator StealCorun()
         {
             yield return new WaitForSeconds(1.2f);
-            _playerFacade.Bringing.SetItem(QuestItem.None);
+            _playerFacade.Interactable.SetItem(QuestItem.None);
             _soundController.PlayMonsterSound(MonsterSound.Laugh);
-            _monsterFacade.Bringing.SetItem(QuestItem.Mop);
-            yield return new WaitForSeconds(8.9f);
+            _monsterFacade.Bringing.SetItem(_item);
+            yield return new WaitForSeconds(3f);
             _monsterFacade.transform.position = _monsterPoint.position;
             _monsterFacade.gameObject.SetActive(true);
-            _questInteractable.TryInteract(out QuestItem item, QuestItem.Mop);
         }
 
         protected override void OnNotifierInvokeHandle()
         {
+            _soundController.PlayMonsterSound(MonsterSound.Laugh);
             _monsterFacade.gameObject.SetActive(false);
+            _questInteractable.TryInteract(out QuestItem item, _item);
         }
     }
 }
