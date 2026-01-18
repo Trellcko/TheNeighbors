@@ -14,7 +14,14 @@ namespace Trellcko.Gameplay.QuestLogic
         [SerializeField] private AudioSource _audioSource;
 
         [SerializeField] private AfterInteractionAction _afterInteractionAction;
+
+        [ShowIf("_showAnimationNameProperty")]
+        [SerializeField] private string _animationName;
+
+        private bool _showAnimationNameProperty => _afterInteractionAction == AfterInteractionAction.PlayAnimation;
+        
         public event Action Interacted;
+        
         public bool IsInteractable { get; private set; }
         
         private MeshRenderer _meshRenderer;
@@ -75,7 +82,7 @@ namespace Trellcko.Gameplay.QuestLogic
                     break;
                 case AfterInteractionAction.PlayAnimation:
                 {
-                    _animator.enabled = true;
+                    _animator.Play(_animationName);
                 }
                     break;
                 default:

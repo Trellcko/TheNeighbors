@@ -58,7 +58,6 @@ namespace Trellcko.Gameplay.QuestLogic
 
         private void OnQuestActivated()
         {
-            
             Debug.Log("Started Quest " + _questSystem.CurrentDayList.CurrentQuest.Description);
             _audioSource.Play();
             _questUI.SetTextWithAnimation(_questSystem.CurrentDayList.CurrentQuest.Description);

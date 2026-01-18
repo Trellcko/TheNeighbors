@@ -23,7 +23,6 @@ namespace Trellcko.Gameplay.Common
 
         private void Update()
         {
-            Debug.LogError($"{_wasInvoked} {IsVisible} {IsActuallyVisible()}");
             if (!_wasInvoked && IsVisible && IsActuallyVisible())
             {
                 BecameVisible?.Invoke();

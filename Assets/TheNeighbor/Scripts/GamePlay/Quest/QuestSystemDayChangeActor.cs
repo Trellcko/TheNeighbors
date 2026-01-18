@@ -50,10 +50,19 @@ namespace Trellcko.Gameplay.QuestLogic
             {
                 ShowCinematic();
             }
-            else
+            else if(!_questSystem.AreAllQuestsCompleted)
             {
                 AnimationStartNextDay();
             }
+            else
+            {
+                FinishGameAnimation();
+            }
+        }
+
+        private void FinishGameAnimation()
+        {
+            _finishDayUI.ShowFinishGameUI();
         }
 
         private void OnCinematicCompleted()

@@ -10,7 +10,8 @@ namespace Trellcko.UI
         [SerializeField] private CanvasGroup _canvasGroup;
 
         [SerializeField] private TextMeshProUGUI _dayText;
-
+        [SerializeField] private TextMeshProUGUI _showFinishGameUI;
+        
         [Header("Animation")] [SerializeField] private float _showTime = 0.9f;
         [SerializeField] private float _hideTime = 0.9f;
         [SerializeField] private float _waitTime = 0.3f;
@@ -19,6 +20,16 @@ namespace Trellcko.UI
 
         private Sequence _sequence;
 
+        public void ShowFinishGameUI()
+        {
+            _sequence?.Kill(true);
+            _dayText.SetText("");
+            _showFinishGameUI.gameObject.SetActive(true);
+            _canvasGroup.alpha = 0;           
+            _sequence = DOTween.Sequence();
+            _sequence.Append(ShowTween());
+        }
+        
         public void ShowUI(int day, Action callback = null)
         {
             _sequence?.Kill(true);

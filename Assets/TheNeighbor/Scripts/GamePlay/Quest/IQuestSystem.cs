@@ -6,6 +6,7 @@ namespace Trellcko.Gameplay.QuestLogic
     {
         QuestsDayList CurrentDayList { get; }
         int Day { get; }
+        bool AreAllQuestsCompleted { get; }
         event Action DayCompleted;
         event Action DayStarted;
         event Action AllDaysCompleted;

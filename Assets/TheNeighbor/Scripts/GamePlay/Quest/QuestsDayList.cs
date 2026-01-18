@@ -18,8 +18,9 @@ namespace Trellcko.Gameplay.QuestLogic
         public event Action QuestActivated;
         public event Action BeforeQuestActivated;
 
-        public void Init()
+        public void Init(int questIndex = 0)
         {
+            QuestIndex = questIndex;
             foreach (Quest quest in Quests)
             {
                 quest.Completed += OnQuestCompleted;
@@ -37,6 +38,7 @@ namespace Trellcko.Gameplay.QuestLogic
             if (QuestIndex == Quests.Count - 1)
             {
                 AllQuestsCompleted?.Invoke();
+                Debug.Log("All quests completed");
                 return;
             }
             QuestIndex++;
