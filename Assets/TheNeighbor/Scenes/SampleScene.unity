@@ -93,7 +93,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 20201, guid: 0000000000000000f000000000000000, type: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 3e61a8ca214eb4d48817bf8b1a925d49, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -6424,9 +6424,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Thank you for playing!
-
-    <size=68>Press Enter to go to the main menu.</size>'
+  m_text: Thank you for playing!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2d3b8cec7dbfc6c46bbe757639b74cd8, type: 2}
   m_sharedMaterial: {fileID: 422540293764581519, guid: 2d3b8cec7dbfc6c46bbe757639b74cd8, type: 2}
@@ -7689,17 +7687,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8410874595343232813, guid: cec69d91bf9cc8449b265845ca0cfb32, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -5.0800014
-      objectReference: {fileID: 0}
-    - target: {fileID: 8410874595343232813, guid: cec69d91bf9cc8449b265845ca0cfb32, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.94
-      objectReference: {fileID: 0}
-    - target: {fileID: 8410874595343232813, guid: cec69d91bf9cc8449b265845ca0cfb32, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -4.716
+    - target: {fileID: 2982753835655026914, guid: cec69d91bf9cc8449b265845ca0cfb32, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8602206509045927762, guid: cec69d91bf9cc8449b265845ca0cfb32, type: 3}
       propertyPath: m_Name
@@ -7752,6 +7742,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4399079799481575809, guid: cec69d91bf9cc8449b265845ca0cfb32, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5993899335899526547}
+    - targetCorrespondingSourceObject: {fileID: 4399079799481575809, guid: cec69d91bf9cc8449b265845ca0cfb32, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5993899335899526555}
   m_SourcePrefab: {fileID: 100100000, guid: cec69d91bf9cc8449b265845ca0cfb32, type: 3}
 --- !u!1 &5993899335899526546 stripped
 GameObject:
@@ -7770,7 +7763,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6504c1b71acf9844caade03714a1c748, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _localPosition: {x: -5.0800014, y: -0.94, z: -4.716}
+  _localPosition: {x: -11.304204, y: -0.28415412, z: -0.056532323}
+--- !u!114 &5993899335899526555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5993899335899526546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4c5dbb137a3287488a8ad1a212984c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8182443052373615523
 PrefabInstance:
   m_ObjectHideFlags: 0
