@@ -25,6 +25,7 @@ namespace HighlightPlus {
         public static int Padding = Shader.PropertyToID("_Padding");
         public static int ResampleScale = Shader.PropertyToID("_ResampleScale");
         public static int NoiseTex = Shader.PropertyToID("_NoiseTex");
+        public static int Pixelation = Shader.PropertyToID("_Pixelation");
         
         // outline uniforms
         public static int OutlineWidth = Shader.PropertyToID("_OutlineWidth");
@@ -59,11 +60,12 @@ namespace HighlightPlus {
         public static int SeeThroughStencilPassOp = Shader.PropertyToID("_SeeThroughStencilPassOp");
         public static int SeeThroughDepthOffset = Shader.PropertyToID("_SeeThroughDepthOffset");
         public static int SeeThroughMaxDepth = Shader.PropertyToID("_SeeThroughMaxDepth");
+        public static int SeeThroughFadeRange = Shader.PropertyToID("_SeeThroughFadeRange");
         public static int SeeThroughTexture = Shader.PropertyToID("_SeeThroughTexture");
         public static int SeeThroughTextureScale = Shader.PropertyToID("_SeeThroughTextureScale");
 
         // inner glow uniforms
-        public static int InnerGlowWidth = Shader.PropertyToID("_InnerGlowWidth");
+        public static int InnerGlowData = Shader.PropertyToID("_InnerGlowData");
         public static int InnerGlowZTest = Shader.PropertyToID("_InnerGlowZTest");
         public static int InnerGlowColor = Shader.PropertyToID("_InnerGlowColor");
         public static int InnerGlowBlendMode = Shader.PropertyToID("_InnerGlowBlendMode");
@@ -77,15 +79,29 @@ namespace HighlightPlus {
         public static int OverlayTexture = Shader.PropertyToID("_OverlayTexture");
         public static int OverlayTextureScrolling = Shader.PropertyToID("_OverlayTextureScrolling");
         public static int OverlayZTest = Shader.PropertyToID("_OverlayZTest");
+        public static int OverlayPatternScrolling = Shader.PropertyToID("_OverlayPatternScrolling");
+        public static int OverlayPatternData = Shader.PropertyToID("_OverlayPatternData");
 
         // target uniforms
         public static int TargetFXRenderData = Shader.PropertyToID("_TargetFXRenderData");
+        public static int TargetFXFrameData = Shader.PropertyToID("_TargetFXFrameData");
         public static int GlowRT = Shader.PropertyToID("_HPComposeGlowFinal");
         public static int OutlineRT = Shader.PropertyToID("_HPComposeOutlineFinal");
 
         // icon uniforms
         public static int IconFXDarkColor = Shader.PropertyToID("_DarkColor");
 
+        // pattern uniforms
+        public static int PatternTex = Shader.PropertyToID("_PatternTex");
+        public static int DistortionTex = Shader.PropertyToID("_DistortionTex");
+        public static int PatternData = Shader.PropertyToID("_PatternData");
+        
+        // dashed outline
+        public static int DashData = Shader.PropertyToID("_DashData");
+
+        // outline gradient
+        public static int OutlineGradientData = Shader.PropertyToID("_OutlineGradientData");
+        
         // keywords
         public const string SKW_ALPHACLIP = "HP_ALPHACLIP";
         public const string SKW_OUTLINE_GRADIENT_WS = "HP_OUTLINE_GRADIENT_WS";
@@ -100,6 +116,16 @@ namespace HighlightPlus {
         public const string SKW_SEETHROUGH_ONLY_BORDER = "HP_SEETHROUGH_ONLY_BORDER";
         public const string SKW_MASK_CUTOUT = "HP_MASK_CUTOUT";
         public const string SKW_DITHER_BLUENOISE = "HP_DITHER_BLUENOISE";
+        public const string SKW_OUTLINE_STYLIZED = "HP_STYLIZED";
+        public const string SKW_OUTLINE_DASHED = "HP_DASHED";
+        public const string SKW_TARGET_FRAME = "HP_TARGET_FRAME";
+        public const string SKW_TARGET_INWARD_CORNERS = "HP_TARGET_INWARD_CORNERS";
+        public const string SKW_TARGET_CROSS = "HP_TARGET_CROSS";
+        public const string SKW_PATTERN_POLKADOTS = "HP_PATTERN_POLKADOTS";
+        public const string SKW_PATTERN_GRID = "HP_PATTERN_GRID";
+        public const string SKW_PATTERN_STAGGERED_LINES = "HP_PATTERN_STAGGERED_LINES";
+        public const string SKW_PATTERN_ZIGZAG = "HP_PATTERN_ZIGZAG";
+        public const string SKW_SOURCE_SOLID_COLOR = "SOURCE_SOLID_COLOR";
     }
 }
 

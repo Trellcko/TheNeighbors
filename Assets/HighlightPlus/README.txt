@@ -89,6 +89,68 @@ https://assetstore.unity.com/publishers/15018
 Version history
 ---------------
 
+Version 32.6
+- Highlight Manager: added "Blocking Layer Mask" option. Objects in this layer mask will block the highlight if they are between the camera and the target.
+- [Fix] HitFX fixes
+
+Version 32.5
+- Highlight Trigger: added "Blocking Layer Mask" option. Objects in this layer mask will block the highlight if they are between the camera and the target.
+
+Version 32.4
+- See-through effect: added "Fade Range" option to Max Depth
+- [Fix] Prevents issues when rendering on depth only targets
+
+Version 32.3
+- Alpha Cut Off: added option to specify custom texture name
+- Label: added "Max Distance" and "Fade Start Distance" (distance-based visibility)
+- Label: added "Scale By Distance" with "Scale Min" and "Scale Max"
+- Label: added "Viewport Offset" option
+- Label: automatically hides when object gets outside of viewport 
+
+Version 32.2.2
+- [Fix] Fixed "Respect Other UI" when raycast source is set to camera direction
+
+Version 32.2
+- Added "Relative Alignment" to label options
+- [Fix] Fixed instanced mesh tracking usage bug
+
+Version 32.1
+- Outline & Outer Glow: added pixelization option in highest quality mode
+- [Fix] Fixed alpha cutoff issue when selecting objects using the Highlight HighlightManager
+- [Fix] Fixed console error when using a material without main texture
+
+Version 32
+- Added "Use Original Shader" option. This advanced option allows using glow/outline in highest quality using the original material shader and support advanced shaders with vertex transformations.
+- Optimization: Outer Glow / Outline in highest quality now dynamically reduce the number of blur passes based on object distance when Constant Width option is disabled
+- Highlight Effect Blocker: added options to include children
+
+Version 31.0
+- New demo scene "TargetClickExample": target over floor and objects and object instantiation
+- New demo scene "Two Managers": using two highlight managers with different settings and target layers each
+- New demo scene "Effects": showing extra stylized options
+- Target: added "Center On Hit Position" and "Align To Hit Normal" options
+- Highlight Manager/Trigger: added OnObjectClicked event
+- Label: added "Always Show In Editor Mode" option
+
+Version 30.0
+- New effect: Label -> displays a text next to the highlighted object
+- Outline: added "Stylized" (toon/charcoal style) option in highest quality mode
+- Outline: added "Dashed" style
+- Outline: added "Gradient" option to Highest Quality mode
+- Outer Glow: added "High Precision" option for smoother results
+- Inner Glow: added "Power" property
+- Icon: added option to use a prefab instead of a mesh
+- Target: added "Style" option with Texture, Frame, InwardCorners and Cross options
+- Target: added minimum opacity options
+- Target: align to ground, added Ground Min Altitude to support transparent ground surfaces
+- Overlay: added pattern option (polkadots, grid, lines, zigzag)
+- Hit FX: added trigger mode option (scripting/when highlighted)
+- Improved padding
+- Smoother outer glow
+- Added "Highlight Root" component. Can be used to specify a different root in the hierarchy when Root To Children is used.
+- Highlight Trigger & Highlight Manager: added "Unhighlight On UI" option under "Respect UI"
+- Render Feature: added option to show/hide effects in Scene View
+
 Version 22.1
 - Added "Target" option under Include
 - Added "Extra Coverage Pixels" to avoid cuts when using cloth or vertex shaders that transform vertices positions

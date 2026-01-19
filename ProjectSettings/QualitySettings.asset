@@ -58,6 +58,7 @@ QualitySettings:
     terrainFadeLength: 5
     terrainMaxTrees: 50
     excludedTargetPlatforms:
+    - WebGL
     - Standalone
   - serializedVersion: 4
     name: PC
