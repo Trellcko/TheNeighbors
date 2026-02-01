@@ -82,7 +82,7 @@ namespace Trellcko.Gameplay.Interactable
                 doorNormal
             );
 
-            return side > 0f ? 90f : -90f;
+            return side > 0f ? 115f : -115f;
         }
     }
 }

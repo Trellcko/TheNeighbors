@@ -10,13 +10,15 @@ namespace Trellcko.Gameplay.House
 {
     public class HouseGenerator : MonoBehaviour
     {
-        [SerializeField] private GameObject[] _roomPrefabs;
+        [SerializeField] private Room[] _roomPrefabs;
         
         [SerializeField] private Wall _wallPrefab;
         [SerializeField] private Wall _wallWithRoomPrefab;
         
         [SerializeField] private Wall[] _spawnedWalls;
         [SerializeField] private List<int> _spawnIndexes;
+
+        private List<Room> _spawnedRooms = new();
         
         private DiContainer _container;
 
@@ -29,7 +31,7 @@ namespace Trellcko.Gameplay.House
 
         private void Awake()
         {
-            GenerateManualPlaceForRooms(_spawnIndexes);
+            GenerateManualHouse();
         }
 
         [Button]
@@ -39,17 +41,18 @@ namespace Trellcko.Gameplay.House
 
             GenerateRandomPlaceForRooms(usedIndexes);
             GenerateRooms(usedIndexes);
-            ClearUselessRooms(usedIndexes);
+            ClearUselessDoors(usedIndexes);
         }
 
         public void GenerateManualHouse()
         {
+            ClearOldRooms();
             GenerateManualPlaceForRooms(_spawnIndexes);
             GenerateRooms(_spawnIndexes);
-            ClearUselessRooms(new());
+            ClearUselessDoors(_spawnIndexes);
         }
 
-        private void ClearUselessRooms(List<int> usedIndexes)
+        private void ClearUselessDoors(List<int> usedIndexes)
         {
             for (int i = 0; i < _spawnedWalls.Length; i++)
             {
@@ -57,11 +60,22 @@ namespace Trellcko.Gameplay.House
                     continue;
                 ChangeWall(i, _wallPrefab);
             }
+
+        }
+
+        private void ClearOldRooms()
+        {
+            foreach (Room room in _spawnedRooms)
+            {
+                Destroy(room.gameObject);
+            }
+
+            _spawnedRooms.Clear();
         }
 
         private void GenerateRandomPlaceForRooms(List<int> usedIndexes)
         {
-            foreach (GameObject room in _roomPrefabs)
+            foreach (Room room in _roomPrefabs)
             {
                 int counts = 0;
                 int pointIndex = -1;
@@ -108,7 +122,8 @@ namespace Trellcko.Gameplay.House
             Wall oldWall = _spawnedWalls[index];
             Transform spawnedWallTransform = _spawnedWalls[index].transform;
             _spawnedWalls[index] = _container
-                .InstantiatePrefab(wallPrefab.gameObject, spawnedWallTransform.position, spawnedWallTransform.rotation, transform)
+                .InstantiatePrefab(wallPrefab.gameObject, spawnedWallTransform.position, 
+                    spawnedWallTransform.rotation, transform)
                 .GetComponent<Wall>();
             _container.Inject(_spawnedWalls[index]);
             Destroy(oldWall.gameObject);
@@ -116,7 +131,13 @@ namespace Trellcko.Gameplay.House
 
         private void GenerateRooms(List<int> usedIndexes)
         {
-            
+            for (int i = 0; i < _roomPrefabs.Length; i++)
+            {
+               _spawnedRooms.Add(_container.InstantiatePrefab(_roomPrefabs[i].gameObject,
+                    _spawnedWalls[usedIndexes[i]].transform.position, 
+                    _spawnedWalls[usedIndexes[i]].transform.rotation, transform)
+                   .GetComponent<Room>());
+            }
         }
     }
 }
