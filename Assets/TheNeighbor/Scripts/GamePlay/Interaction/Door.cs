@@ -72,14 +72,17 @@ namespace Trellcko.Gameplay.Interactable
 
         private float GetOpenAngel()
         {
-            Vector3 toPlayer = (_playerFacade.transform.position - transform.position).normalized;
-            float dot = Vector2.SignedAngle(transform.forward, toPlayer);
-            if (dot > 0)
-            {
-                return -90;
-            }
+            Vector3 toPlayer = _playerFacade.transform.position - transform.position;
 
-            return 90;
+            Vector3 doorNormal = transform.up;
+
+            float side = Vector3.SignedAngle(
+                transform.forward,
+                toPlayer,
+                doorNormal
+            );
+
+            return side > 0f ? 90f : -90f;
         }
     }
 }

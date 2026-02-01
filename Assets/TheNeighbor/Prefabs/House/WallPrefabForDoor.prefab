@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3103129309299554478}
   - component: {fileID: 2498732323506154703}
   - component: {fileID: 7980220948240321339}
+  - component: {fileID: 7582867130018053892}
   m_Layer: 7
   m_Name: WallPrefabForDoor
   m_TagString: Untagged
@@ -131,6 +132,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.005961354, y: 0.020000039, z: 0}
   m_Center: {x: 0.0070193657, y: 0, z: 0}
+--- !u!114 &7582867130018053892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7937896355069412201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b92040fd88c3e8d4b87044dc66db7816, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <WallType>k__BackingField: 1
 --- !u!1001 &4295097611054955679
 PrefabInstance:
   m_ObjectHideFlags: 0
