@@ -1,6 +1,6 @@
 ﻿namespace Trellcko.Core.Audio
 {
-    public enum Ost
+    public enum Ambience
     {
         InDayTime,
         InStrangeDayTime

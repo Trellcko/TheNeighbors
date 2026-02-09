@@ -51,7 +51,7 @@ namespace Trellcko.Gameplay.QuestLogic
 
         private void StartCurrentDay(int fromQuestIndex = 0)
         {
-            _soundController.PlayOst(_questDays[Day].Ost);
+            _soundController.PlayAmbience(_questDays[Day].Ambience);
             _questDays[Day].Init(fromQuestIndex);
             DayStarted?.Invoke();
         }

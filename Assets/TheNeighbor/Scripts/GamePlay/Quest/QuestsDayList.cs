@@ -8,7 +8,7 @@ namespace Trellcko.Gameplay.QuestLogic
     [Serializable]
     public class QuestsDayList
     {
-        [field: SerializeField] public Ost Ost { get; set; } = Ost.InDayTime;
+        [field: SerializeField] public Ambience Ambience { get; set; } = Ambience.InDayTime;
         [field: SerializeField] public List<Quest> Quests { get; private set; }
         public Quest CurrentQuest => Quests[QuestIndex];
 

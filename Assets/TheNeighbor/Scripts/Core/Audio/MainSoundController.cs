@@ -12,14 +12,14 @@ namespace Trellcko.Core.Audio
         [SerializeField] private OstData[] _ambiences;
         [SerializeField] private MonsterSoundData[] _monsterSound;
         [SerializeField] private AudioClip _shockMoment;
+        public bool IsAmbiencPlaying => _ambienceAudioSource.isPlaying;
+        public Ambience CurrentAmbience { get; private set; }
 
-        private Ost _lastOst;
-        
-        public void PlayOst(Ost ost)
+        public void PlayAmbience(Ambience ambience)
         {
-            _lastOst = ost;
+            CurrentAmbience = ambience;
             _ambienceAudioSource.loop = true;
-            _ambienceAudioSource.clip = _ambiences.First(x => x.Ost == ost).Clip;
+            _ambienceAudioSource.clip = _ambiences.First(x => x.ambience == ambience).Clip;
             _ambienceAudioSource.Play();
         }
 
@@ -46,7 +46,7 @@ namespace Trellcko.Core.Audio
             {
                 yield return null;
             }
-            PlayOst(_lastOst);
+            PlayAmbience(CurrentAmbience);
         }
 
         public void StopPlayingAmbience()

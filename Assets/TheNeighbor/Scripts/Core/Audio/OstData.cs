@@ -6,7 +6,7 @@ namespace Trellcko.Core.Audio
     [Serializable]
     public class OstData
     {
-        public Ost Ost;
+        public Ambience ambience;
         public AudioClip Clip;
     }
 }
