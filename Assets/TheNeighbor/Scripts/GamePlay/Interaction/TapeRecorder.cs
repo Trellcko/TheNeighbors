@@ -9,6 +9,11 @@ namespace Trellcko.Gameplay.Interactable
     public class TapeRecorder : MonoBehaviour, IInteractable
     {
         [field: SerializeField] public InteractableOutline InteractableOutline { get; private set; }
+        [SerializeField] private AudioSource _audioSource;
+        [SerializeField] private AudioClip _putClip;
+        [SerializeField] private AudioClip _getClip;
+        
+        
         public bool IsInteractable => true;
         public event Action Interacted;
 
@@ -25,13 +30,16 @@ namespace Trellcko.Gameplay.Interactable
             getItem = neededItem;
             if (_soundController.IsAmbiencPlaying)
             {
+                _audioSource.clip = _getClip;
                 _soundController.StopPlayingAmbience();
             }
             else
             {
+                _audioSource.clip = _putClip;
                 _soundController.PlayAmbience(_soundController.CurrentAmbience);
             }
 
+            _audioSource.Play();
             return true;
         }
     }
