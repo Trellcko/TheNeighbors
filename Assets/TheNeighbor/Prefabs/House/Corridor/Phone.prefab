@@ -141,7 +141,9 @@ MonoBehaviour:
   _audioSource: {fileID: 9122445999068356961}
   _ringClip: {fileID: 8300000, guid: 6c43a3f4b20f12c42b875dddb75f53fb, type: 3}
   _hangUpPhoneClip: {fileID: 8300000, guid: 8682441616a29c54882c876e42a98a78, type: 3}
-  _monsterSound: {fileID: 8300000, guid: 0625b26d3e8660547a7572af797dbbe6, type: 3}
+  _hangDownPhoneClip: {fileID: 8300000, guid: 3c69d942219b6704db0bd289d4551397, type: 3}
+  _sound: {fileID: 8300000, guid: 43419189c46168943b9f1d8b30fce9c6, type: 3}
+  _speekingTime: 3
   <InteractableOutline>k__BackingField: {fileID: 5765397122408976115}
 --- !u!82 &9122445999068356961
 AudioSource:

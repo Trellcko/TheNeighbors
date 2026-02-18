@@ -10,7 +10,9 @@ namespace Trellcko.Gameplay.Interactable
         [SerializeField] private AudioSource _audioSource;
         [SerializeField] private AudioClip _ringClip;
         [SerializeField] private AudioClip _hangUpPhoneClip;
-        [SerializeField] private AudioClip _monsterSound;
+        [SerializeField] private AudioClip _hangDownPhoneClip;
+        [SerializeField] private AudioClip _sound;
+        [SerializeField] private float _speekingTime;
         [field: SerializeField] public InteractableOutline InteractableOutline { get; private set; }
         public bool IsInteractable { get; private set; }
         public event Action Interacted;
@@ -31,18 +33,22 @@ namespace Trellcko.Gameplay.Interactable
         public bool TryInteract(out QuestItem getItem, QuestItem neededItem)
         {
             getItem = neededItem;
+            if (!IsInteractable) return false;
             IsInteractable = false;
             _audioSource.clip = _hangUpPhoneClip;
             _audioSource.Play();
             _audioSource.loop = false;
-            StartCoroutine(PlayMonsterSound());
+            StartCoroutine(PlaySound());
             return true;
         }
 
-        private IEnumerator PlayMonsterSound()
+        private IEnumerator PlaySound()
         {
             yield return new WaitForSeconds(1f);
-            _audioSource.clip = _monsterSound;
+            _audioSource.clip = _sound;
+            _audioSource.Play();
+            yield return new WaitForSeconds(_speekingTime);
+            _audioSource.clip = _hangDownPhoneClip;
             _audioSource.Play();
         }
     }
