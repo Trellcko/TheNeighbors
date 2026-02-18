@@ -17,11 +17,6 @@ namespace Trellcko.Gameplay.Interactable
         public bool IsInteractable { get; private set; }
         public event Action Interacted;
 
-        private void Awake()
-        {
-            Activate();
-        }
-
         public void Activate()
         {
             IsInteractable = true;
@@ -39,6 +34,7 @@ namespace Trellcko.Gameplay.Interactable
             _audioSource.Play();
             _audioSource.loop = false;
             StartCoroutine(PlaySound());
+            InteractableOutline.Disable();
             return true;
         }
 

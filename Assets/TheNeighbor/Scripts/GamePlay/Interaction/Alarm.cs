@@ -34,6 +34,9 @@ public class Alarm : MonoBehaviour, IInteractable
         _audioSource.clip = _turnOffAlarm;
         _audioSource.loop = false;
         _audioSource.Play();
+        Interacted?.Invoke();
+        IsInteractable = false;
+        InteractableOutline.Disable();
         return true;
     }
 }

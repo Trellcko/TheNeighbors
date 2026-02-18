@@ -14,7 +14,7 @@ namespace Trellcko.Gameplay
         [SerializeField] private ParticleSystem _redParticle;
         [SerializeField] private AudioSource _audio;
 
-        public bool IsWorked { get; private set; } = true;
+        public bool IsWorked { get; private set; } = false;
 
         public event Action Interacted;
 
@@ -33,7 +33,7 @@ namespace Trellcko.Gameplay
             {
                 TurnOn();
             }
-            
+            Interacted?.Invoke();
             return true;
         }
 
