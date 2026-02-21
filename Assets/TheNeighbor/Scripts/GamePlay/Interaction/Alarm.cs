@@ -14,11 +14,6 @@ public class Alarm : MonoBehaviour, IInteractable
     public event Action Interacted;
     public bool IsInteractable { get; private set; }
 
-    private void Start()
-    {
-        Activate();
-    }
-
     public void Activate()
     {
         IsInteractable = true;
