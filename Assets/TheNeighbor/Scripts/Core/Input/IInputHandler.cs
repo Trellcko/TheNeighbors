@@ -13,5 +13,6 @@ namespace Trellcko.Core.Input
         event Action SprintCanceled;
         event Action<Vector2> MouseMoved;
         event Action Interacted;
+        event Action SpaceClicked;
     }
 }

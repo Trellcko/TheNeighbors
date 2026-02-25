@@ -16,6 +16,7 @@ namespace Trellcko.Core.Input
         public event Action SprintCanceled;
         public event Action<Vector2> MouseMoved;
         public event Action Interacted;
+        public event Action SpaceClicked;
 
         public InputHandler()
         {
@@ -26,6 +27,7 @@ namespace Trellcko.Core.Input
             _actions.Player.Interact.performed += OnInteracted;
             _actions.Player.Sprint.performed += OnSprintPerformed;
             _actions.Player.Sprint.canceled += OnSprintCanceled;
+            _actions.Player.Space.performed += OnSpacePerformed;
         }
 
         public void Dispose()
@@ -34,6 +36,14 @@ namespace Trellcko.Core.Input
             _actions.Player.Rotation.performed -= OnRotationPerformed;
             _actions.Player.Move.canceled -= OnMoveCanceled;
             _actions.Player.Interact.performed -= OnInteracted;
+            _actions.Player.Sprint.performed -= OnSprintPerformed;
+            _actions.Player.Sprint.canceled -= OnSprintCanceled;
+            _actions.Player.Space.performed -= OnSpacePerformed;
+        }
+
+        private void OnSpacePerformed(InputAction.CallbackContext obj)
+        {
+            SpaceClicked?.Invoke();
         }
 
         private void OnInteracted(InputAction.CallbackContext obj)

@@ -128,6 +128,15 @@ namespace Trellcko.Core.Input
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Space"",
+                    ""type"": ""Button"",
+                    ""id"": ""e58e816c-557a-4109-bb58-5d0a1329d5d2"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -273,6 +282,17 @@ namespace Trellcko.Core.Input
                     ""action"": ""Sprint"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""79a37caa-4fde-41b4-b2a7-2baba96d5bc4"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Space"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -346,6 +366,7 @@ namespace Trellcko.Core.Input
             m_Player_Rotation = m_Player.FindAction("Rotation", throwIfNotFound: true);
             m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
             m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
+            m_Player_Space = m_Player.FindAction("Space", throwIfNotFound: true);
         }
 
         ~@InputSystemActions()
@@ -430,6 +451,7 @@ namespace Trellcko.Core.Input
         private readonly InputAction m_Player_Rotation;
         private readonly InputAction m_Player_Interact;
         private readonly InputAction m_Player_Sprint;
+        private readonly InputAction m_Player_Space;
         /// <summary>
         /// Provides access to input actions defined in input action map "Player".
         /// </summary>
@@ -457,6 +479,10 @@ namespace Trellcko.Core.Input
             /// Provides access to the underlying input action "Player/Sprint".
             /// </summary>
             public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
+            /// <summary>
+            /// Provides access to the underlying input action "Player/Space".
+            /// </summary>
+            public InputAction @Space => m_Wrapper.m_Player_Space;
             /// <summary>
             /// Provides access to the underlying input action map instance.
             /// </summary>
@@ -495,6 +521,9 @@ namespace Trellcko.Core.Input
                 @Sprint.started += instance.OnSprint;
                 @Sprint.performed += instance.OnSprint;
                 @Sprint.canceled += instance.OnSprint;
+                @Space.started += instance.OnSpace;
+                @Space.performed += instance.OnSpace;
+                @Space.canceled += instance.OnSpace;
             }
 
             /// <summary>
@@ -518,6 +547,9 @@ namespace Trellcko.Core.Input
                 @Sprint.started -= instance.OnSprint;
                 @Sprint.performed -= instance.OnSprint;
                 @Sprint.canceled -= instance.OnSprint;
+                @Space.started -= instance.OnSpace;
+                @Space.performed -= instance.OnSpace;
+                @Space.canceled -= instance.OnSpace;
             }
 
             /// <summary>
@@ -651,6 +683,13 @@ namespace Trellcko.Core.Input
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
             void OnSprint(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "Space" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnSpace(InputAction.CallbackContext context);
         }
     }
 }

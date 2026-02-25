@@ -12,6 +12,7 @@ namespace Trellcko.Gameplay.Interactable
         public bool TryInteract(out QuestItem getItem, QuestItem neededItem)
         {
             getItem = neededItem;
+            Interacted?.Invoke();
             return true;
         }
     }

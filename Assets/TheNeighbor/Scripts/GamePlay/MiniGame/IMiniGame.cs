@@ -4,6 +4,6 @@
     {
         MiniGameType MinigameType { get; }
         void StartGame();
-        void FinishGame();
+        void FinishGame(bool success);
     }
 }

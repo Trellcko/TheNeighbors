@@ -11,15 +11,15 @@ namespace Trellcko.Gameplay.Player
     {
         [SerializeField] private float _rayLength;
         [SerializeField] private Bringing _bringing;
+
+        public bool IsEnabled { get; set; } = true;
         
         private QuestItem _item;
         
         private IInputHandler _inputHandler;
-
-        private Camera _camera;
-        
         private IInteractable _lastInteractable;
 
+        private Camera _camera;
         private readonly RaycastHit[] _hits = new RaycastHit[5];
 
         [Inject]
@@ -60,6 +60,8 @@ namespace Trellcko.Gameplay.Player
 
         private void CheckForSelectables()
         {
+            if(!IsEnabled) return;
+            
             _lastInteractable?.InteractableOutline.EnableInteractOutline(false);
             if (TryGetInteractable(out IInteractable questInteractable))
             {
@@ -119,7 +121,6 @@ namespace Trellcko.Gameplay.Player
         private void OnDrawGizmos()
         {
             Transform temp = Camera.main.transform;
-           
             Gizmos.DrawWireSphere(temp.position, _rayLength);
         }
     }
