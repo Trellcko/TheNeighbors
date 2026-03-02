@@ -1,4 +1,4 @@
-using System;
+using Trellcko.Gameplay.MiniGame;
 using Trellcko.Gameplay.QuestLogic;
 using UnityEngine;
 using Zenject;

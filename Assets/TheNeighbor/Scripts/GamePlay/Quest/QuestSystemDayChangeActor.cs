@@ -12,7 +12,7 @@ namespace Trellcko.Gameplay.QuestLogic
     {
         [SerializeField] private List<BaseCinematic> _cinematic;
 
-        private FinishDayUI _finishDayUI;
+        private TransitionUI _transitionUI;
         private GameUI _gameUI;
         private PlayerFacade _player;
         private IQuestSystem _questSystem;
@@ -22,12 +22,12 @@ namespace Trellcko.Gameplay.QuestLogic
         private PlayerRotation PlayerRotation => _player.PlayerRotation;
 
         [Inject]
-        private void Construct(IQuestSystem questSystem, IDayResetting dayResetting, PlayerFacade player, FinishDayUI finishDayUI, GameUI gameUI)
+        private void Construct(IQuestSystem questSystem, IDayResetting dayResetting, PlayerFacade player, TransitionUI transitionUI, GameUI gameUI)
         {
             _dayResetting = dayResetting;
             _player = player;
             _questSystem = questSystem;
-            _finishDayUI = finishDayUI;
+            _transitionUI = transitionUI;
             _gameUI = gameUI;
         }
 
@@ -62,7 +62,7 @@ namespace Trellcko.Gameplay.QuestLogic
 
         private void FinishGameAnimation()
         {
-            _finishDayUI.ShowFinishGameUI();
+            _transitionUI.ShowFinishGameUI();
         }
 
         private void OnCinematicCompleted()
@@ -74,22 +74,22 @@ namespace Trellcko.Gameplay.QuestLogic
 
         private void ShowCinematic()
         {
-            _finishDayUI.ShowUI(-1, () =>
+            _transitionUI.ShowUI(-1, () =>
             {
                 _gameUI.gameObject.SetActive(false);
                 _cinematic[_questSystem.Day].Play();
                 _cinematic[_questSystem.Day].Completed += OnCinematicCompleted;
-                _finishDayUI.HideUI();
+                _transitionUI.HideUI();
             });
         }
 
         private void AnimationStartNextDay(Action callback = null)
         {
-            _finishDayUI.ShowUI(_questSystem.Day + 2, () =>
+            _transitionUI.ShowUI(_questSystem.Day + 2, () =>
             {
                 _dayResetting.ResetItemsFor(_questSystem.Day + 1);
                 _questSystem.StartNextDay();
-                _finishDayUI.HideUI(() =>
+                _transitionUI.HideUI(() =>
                 {
                     PlayerMovement.IsEnabled = PlayerRotation.IsEnabled = true;
                 });

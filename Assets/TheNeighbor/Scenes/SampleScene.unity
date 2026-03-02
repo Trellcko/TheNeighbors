@@ -1379,61 +1379,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _activationDay: 3
   _minMaxTime: {x: 20, y: 40}
---- !u!1 &682212019
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 682212021}
-  - component: {fileID: 682212020}
-  m_Layer: 0
-  m_Name: FinishDayUI
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &682212020
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 682212019}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42b9babef267a0f40b69ae186602ca34, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _canvasGroup: {fileID: 1492945035}
-  _dayText: {fileID: 1936751294}
-  _showFinishGameUI: {fileID: 1932239928}
-  _showTime: 0.9
-  _hideTime: 0.9
-  _waitTime: 0.5
---- !u!224 &682212021
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 682212019}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1287004268}
-  m_Father: {fileID: 1492945034}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &685283564 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8875862622150635597, guid: 8496c030fbe3957478461498419b6e39, type: 3}
@@ -3232,6 +3177,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1287004268}
+  - component: {fileID: 1287004269}
   m_Layer: 0
   m_Name: Content
   m_TagString: Untagged
@@ -3246,7 +3192,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1287004267}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3254,13 +3200,31 @@ RectTransform:
   - {fileID: 1349833363}
   - {fileID: 1936751296}
   - {fileID: 1932239927}
-  m_Father: {fileID: 682212021}
+  m_Father: {fileID: 1492945034}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1287004269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1287004267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42b9babef267a0f40b69ae186602ca34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _canvasGroup: {fileID: 1492945035}
+  _dayText: {fileID: 1936751294}
+  _showFinishGameUI: {fileID: 1932239928}
+  _showTime: 0.9
+  _hideTime: 0.9
+  _waitTime: 0.5
 --- !u!1 &1292166839
 GameObject:
   m_ObjectHideFlags: 0
@@ -3708,7 +3672,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 682212021}
+  - {fileID: 1287004268}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -5380,7 +5344,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb6c1d5b0e704f14288c189f01a692eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _finishDayUI: {fileID: 682212020}
+  transitionUI: {fileID: 1287004269}
   _gameUI: {fileID: 131146917}
 --- !u!114 &2023321388
 MonoBehaviour:

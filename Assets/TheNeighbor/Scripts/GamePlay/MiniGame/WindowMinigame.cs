@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -27,12 +28,13 @@ namespace Trellcko.Gameplay.MiniGame
         private PlayerFacade _playerFacade;
         private bool _isGameStarted;
 
+        public event Action<bool, IMiniGame> Finished;
+
         public MiniGameType MinigameType => MiniGameType.WindowMiniGame;
 
         [Inject]
-        private void Construct(PlayerFacade playerFacade, IInputHandler inputHandler)// QuestSystem questSystem)
+        private void Construct(PlayerFacade playerFacade, IInputHandler inputHandler)
         {
-           // _questSystem = questSystem;
             _inputHandler = inputHandler;
             _playerFacade = playerFacade;
         }
@@ -60,15 +62,20 @@ namespace Trellcko.Gameplay.MiniGame
 
         public void FinishGame(bool success)
         {
+            Finished?.Invoke(success, this);
             _isGameStarted = false;
+        }
+
+        public void ExitGame()
+        {
             _UI.SetActive(false);
             _playerFacade.PlayerMovement.IsEnabled = true;
             _playerFacade.PlayerRotation.IsEnabled = true;
             _playerFacade.Interactable.IsEnabled = true;
             _camera.enabled = false;
-            
+
             _inputHandler.SpaceClicked -= OnSpaceClicked;
-            
+
             if(_miniGameCoroutine != null)
                 StopCoroutine(_miniGameCoroutine);
         }

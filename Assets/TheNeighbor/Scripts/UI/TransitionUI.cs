@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Trellcko.UI
 {
-    public class FinishDayUI : MonoBehaviour
+    public class TransitionUI : MonoBehaviour
     {
         [SerializeField] private CanvasGroup _canvasGroup;
 
@@ -52,7 +52,7 @@ namespace Trellcko.UI
             _sequence.Append(HideTween().SetDelay(_waitTime)).OnComplete(()=>callback?.Invoke());
         }
 
-        public void ShowAndHideUI(int day, Action callback = null)
+        public void ShowAndHideUI(int day, Action show = null, Action hide = null)
         {
             _sequence?.Kill(true);
             _canvasGroup.alpha = 0;
@@ -64,7 +64,7 @@ namespace Trellcko.UI
             }
 
             _sequence = DOTween.Sequence();
-            _sequence.Append(ShowTween()).Append(HideTween().SetDelay(_waitTime)).OnComplete(()=>callback?.Invoke());
+            _sequence.Append(ShowTween().OnComplete(()=> show?.Invoke())).Append(HideTween().SetDelay(_waitTime)).OnComplete(()=>hide?.Invoke());
         }
 
         private Tween ShowTween() => _canvasGroup.DOFade(1, _showTime);

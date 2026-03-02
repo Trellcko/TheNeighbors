@@ -1,43 +1,60 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using Trellcko.Gameplay.MiniGame;
+using Trellcko.UI;
 using UnityEngine;
+using Zenject;
 
-public class MiniGamesController : MonoBehaviour
+namespace Trellcko.Gameplay.MiniGame
 {
-   [SerializeField] private List<GameObject> _minigamesGO;
-   
-   private List<IMiniGame> _minigames = new();
-
-   private void Awake()
+   public class MiniGamesController : MonoBehaviour
    {
-      foreach (GameObject miniGameGo in _minigamesGO)
+      [SerializeField] private List<GameObject> _minigamesGO;
+
+      private TransitionUI _transitionUI;
+      private readonly List<IMiniGame> _minigames = new();
+
+      [Inject]
+      private void Construct(TransitionUI transitionUI)
       {
-         if (miniGameGo.TryGetComponent(out IMiniGame miniGame))
+         _transitionUI = transitionUI;
+      }
+
+      private void Awake()
+      {
+         foreach (GameObject miniGameGo in _minigamesGO)
          {
-            _minigames.Add(miniGame);
+            if (miniGameGo.TryGetComponent(out IMiniGame miniGame))
+            {
+               _minigames.Add(miniGame);
+            }
+            else
+            {
+               Debug.LogError($"{miniGameGo.name} has no IMiniGame");
+            }
          }
-         else
+      }
+
+      public void StartMiniGame(MiniGameType miniGameType)
+      {
+         foreach (IMiniGame minigame in _minigames.Where(minigame => minigame.MinigameType == miniGameType))
          {
-            Debug.LogError($"{miniGameGo.name} has no IMiniGame");
+            _transitionUI.ShowAndHideUI(-1, minigame.StartGame);
+            minigame.Finished += OnFinished;
+            return;
          }
+
+         Debug.LogError($"No MiniGame {miniGameType} found");
+      }
+
+      private void OnFinished(bool success, IMiniGame minigame)
+      {
+         minigame.Finished -= OnFinished;
+         _transitionUI.ShowAndHideUI(-1, minigame.ExitGame);
       }
    }
 
-   public void StartMiniGame(MiniGameType miniGameType)
+   public enum MiniGameType
    {
-      foreach (IMiniGame minigame in _minigames.Where(minigame => minigame.MinigameType == miniGameType))
-      {
-         minigame.StartGame();
-         return;
-      }
-
-      Debug.LogError($"No MiniGame {miniGameType} found");
+      WindowMiniGame
    }
-}
-
-public enum MiniGameType
-{
-   WindowMiniGame
 }
