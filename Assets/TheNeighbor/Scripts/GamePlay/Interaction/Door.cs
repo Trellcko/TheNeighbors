@@ -39,9 +39,8 @@ namespace Trellcko.Gameplay.Interactable
             {
                 InteractableOutline.Disable();
                 IsInteractable = false;
-                float angel = GetOpenAngel();
                 Vector3 targetAngel = _defaultAngel;
-                targetAngel.y = angel;
+                targetAngel.y = -115f;
                 _interactAudio.Play();
                 Interacted?.Invoke();
                 transform.DOLocalRotate(targetAngel, OpenTime)
