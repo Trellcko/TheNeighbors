@@ -5856,11 +5856,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2935066301352151446, guid: 8496c030fbe3957478461498419b6e39, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5334417478840327623, guid: 8496c030fbe3957478461498419b6e39, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -13.29
+      value: -9.34
       objectReference: {fileID: 0}
     - target: {fileID: 5334417478840327623, guid: 8496c030fbe3957478461498419b6e39, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5868,7 +5868,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5334417478840327623, guid: 8496c030fbe3957478461498419b6e39, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.32
+      value: -12.62
       objectReference: {fileID: 0}
     - target: {fileID: 5334417478840327623, guid: 8496c030fbe3957478461498419b6e39, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5975,6 +5975,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1682672207650904561, guid: 921a743bcc9e49c47b7e8d66cbf457f8, type: 3}
+      propertyPath: _monster
+      value: 
+      objectReference: {fileID: 997687894}
     - target: {fileID: 1795910249543119941, guid: 921a743bcc9e49c47b7e8d66cbf457f8, type: 3}
       propertyPath: m_Name
       value: MainCorridor
