@@ -1013,6 +1013,17 @@ MonoBehaviour:
   _monsterPoint: {fileID: 2039651817}
   _questInteractable: {fileID: 0}
   _item: 3
+--- !u!114 &377210298 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 274694756533771414, guid: 7147af7caa4d2c9448f1de87d4712bdd, type: 3}
+  m_PrefabInstance: {fileID: 4246944704949796542}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9dfa5b682dcd46bda6128250e975f58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &381850260
 GameObject:
   m_ObjectHideFlags: 0
@@ -1182,6 +1193,41 @@ MonoBehaviour:
   _monsterPoint: {fileID: 165103970}
   _questInteractable: {fileID: 0}
   _item: 2
+--- !u!1 &472254058 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3824761074813479632, guid: 7147af7caa4d2c9448f1de87d4712bdd, type: 3}
+  m_PrefabInstance: {fileID: 4246944704949796542}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &472254063 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8740223343695697982, guid: 7147af7caa4d2c9448f1de87d4712bdd, type: 3}
+  m_PrefabInstance: {fileID: 4246944704949796542}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 472254058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6a0b33355b8fe94682bacc1b4796536, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &472254068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 472254058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bc2a97d58191ea4d96ba9860eb033c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <InteractableOutline>k__BackingField: {fileID: 472254063}
+  _clothesPrefab: {fileID: 6475956729686625378, guid: e9c1b3f9c17ee14409332e0eaf6832bf, type: 3}
+--- !u!1 &509137422 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5279306810368843054, guid: 7147af7caa4d2c9448f1de87d4712bdd, type: 3}
+  m_PrefabInstance: {fileID: 4246944704949796542}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &554487579
 GameObject:
   m_ObjectHideFlags: 0
@@ -1257,6 +1303,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 554487579}
   m_CullTransparentMesh: 1
+--- !u!4 &555102491 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 691260906631608961, guid: 921a743bcc9e49c47b7e8d66cbf457f8, type: 3}
+  m_PrefabInstance: {fileID: 3827104582650200395}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &557569858
 GameObject:
   m_ObjectHideFlags: 0
@@ -1911,6 +1962,67 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 918332511}
   m_CullTransparentMesh: 1
+--- !u!1001 &925726403
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 555102491}
+    m_Modifications:
+    - target: {fileID: 3188302211162012412, guid: c322cc7c326b17442aa5bf8abeb03c7e, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 221.00002
+      objectReference: {fileID: 0}
+    - target: {fileID: 3188302211162012412, guid: c322cc7c326b17442aa5bf8abeb03c7e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3188302211162012412, guid: c322cc7c326b17442aa5bf8abeb03c7e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3188302211162012412, guid: c322cc7c326b17442aa5bf8abeb03c7e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -24.8625
+      objectReference: {fileID: 0}
+    - target: {fileID: 3188302211162012412, guid: c322cc7c326b17442aa5bf8abeb03c7e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3188302211162012412, guid: c322cc7c326b17442aa5bf8abeb03c7e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3188302211162012412, guid: c322cc7c326b17442aa5bf8abeb03c7e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3188302211162012412, guid: c322cc7c326b17442aa5bf8abeb03c7e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3188302211162012412, guid: c322cc7c326b17442aa5bf8abeb03c7e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3188302211162012412, guid: c322cc7c326b17442aa5bf8abeb03c7e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3188302211162012412, guid: c322cc7c326b17442aa5bf8abeb03c7e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7937896355069412201, guid: c322cc7c326b17442aa5bf8abeb03c7e, type: 3}
+      propertyPath: m_Name
+      value: WallPrefabForDoor
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c322cc7c326b17442aa5bf8abeb03c7e, type: 3}
 --- !u!1 &928163896
 GameObject:
   m_ObjectHideFlags: 0
@@ -2762,6 +2874,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _minigamesGO:
   - {fileID: 42245086}
+  - {fileID: 509137422}
 --- !u!1 &1232144911
 GameObject:
   m_ObjectHideFlags: 0
@@ -2825,7 +2938,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1239929709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2842,113 +2955,9 @@ MonoBehaviour:
   - <Ambience>k__BackingField: 0
     <Quests>k__BackingField:
     - <Description>k__BackingField: Make The Bed
-      <QuestInteractable>k__BackingField: {fileID: 0}
-    - <Description>k__BackingField: Get Mop
-      <QuestInteractable>k__BackingField: {fileID: 0}
-    - <Description>k__BackingField: Clean Up
-      <QuestInteractable>k__BackingField: {fileID: 0}
-    - <Description>k__BackingField: Take Clothes
-      <QuestInteractable>k__BackingField: {fileID: 0}
-    - <Description>k__BackingField: Put Into Cabinet
-      <QuestInteractable>k__BackingField: {fileID: 0}
-    - <Description>k__BackingField: "Get Watering \u0421an"
-      <QuestInteractable>k__BackingField: {fileID: 0}
-    - <Description>k__BackingField: To Water Flowers
-      <QuestInteractable>k__BackingField: {fileID: 0}
-    - <Description>k__BackingField: Eat Cookies
-      <QuestInteractable>k__BackingField: {fileID: 0}
-    - <Description>k__BackingField: Go To Sleep
-      <QuestInteractable>k__BackingField: {fileID: 0}
-  - <Ambience>k__BackingField: 0
-    <Quests>k__BackingField:
+      <QuestInteractable>k__BackingField: {fileID: 1245300654}
     - <Description>k__BackingField: Make The Bed
-      <QuestInteractable>k__BackingField: {fileID: 0}
-    - <Description>k__BackingField: Take Clothes
-      <QuestInteractable>k__BackingField: {fileID: 0}
-    - <Description>k__BackingField: Put Into Cabinet
-      <QuestInteractable>k__BackingField: {fileID: 0}
-    - <Description>k__BackingField: "Get Watering \u0421an"
-      <QuestInteractable>k__BackingField: {fileID: 0}
-    - <Description>k__BackingField: To Water Flowers
-      <QuestInteractable>k__BackingField: {fileID: 0}
-    - <Description>k__BackingField: Eat Cookies
-      <QuestInteractable>k__BackingField: {fileID: 0}
-    - <Description>k__BackingField: Get Mop
-      <QuestInteractable>k__BackingField: {fileID: 0}
-    - <Description>k__BackingField: Clean Up
-      <QuestInteractable>k__BackingField: {fileID: 0}
-    - <Description>k__BackingField: Clean Up
-      <QuestInteractable>k__BackingField: {fileID: 0}
-    - <Description>k__BackingField: Clean Up
-      <QuestInteractable>k__BackingField: {fileID: 0}
-    - <Description>k__BackingField: Clean Up
-      <QuestInteractable>k__BackingField: {fileID: 0}
-    - <Description>k__BackingField: Clean Up
-      <QuestInteractable>k__BackingField: {fileID: 0}
-    - <Description>k__BackingField: Clean Up
-      <QuestInteractable>k__BackingField: {fileID: 0}
-    - <Description>k__BackingField: Go To Sleep
-      <QuestInteractable>k__BackingField: {fileID: 0}
-  - <Ambience>k__BackingField: 0
-    <Quests>k__BackingField:
-    - <Description>k__BackingField: Make The Bed
-      <QuestInteractable>k__BackingField: {fileID: 0}
-    - <Description>k__BackingField: Get Mop
-      <QuestInteractable>k__BackingField: {fileID: 0}
-    - <Description>k__BackingField: Clean Up
-      <QuestInteractable>k__BackingField: {fileID: 0}
-    - <Description>k__BackingField: Take Clothes
-      <QuestInteractable>k__BackingField: {fileID: 0}
-    - <Description>k__BackingField: Put Into Cabinet
-      <QuestInteractable>k__BackingField: {fileID: 0}
-    - <Description>k__BackingField: "Get Watering \u0421an"
-      <QuestInteractable>k__BackingField: {fileID: 0}
-    - <Description>k__BackingField: To Water Flowers
-      <QuestInteractable>k__BackingField: {fileID: 0}
-    - <Description>k__BackingField: Eat Cookies
-      <QuestInteractable>k__BackingField: {fileID: 0}
-    - <Description>k__BackingField: Go To Sleep
-      <QuestInteractable>k__BackingField: {fileID: 0}
-  - <Ambience>k__BackingField: 0
-    <Quests>k__BackingField:
-    - <Description>k__BackingField: Make The Bed
-      <QuestInteractable>k__BackingField: {fileID: 0}
-    - <Description>k__BackingField: Get Mop
-      <QuestInteractable>k__BackingField: {fileID: 0}
-    - <Description>k__BackingField: Clean Up The Blood
-      <QuestInteractable>k__BackingField: {fileID: 0}
-    - <Description>k__BackingField: Take BodyParts
-      <QuestInteractable>k__BackingField: {fileID: 0}
-    - <Description>k__BackingField: Put Into Fridge
-      <QuestInteractable>k__BackingField: {fileID: 0}
-    - <Description>k__BackingField: "Get Watering \u0421an"
-      <QuestInteractable>k__BackingField: {fileID: 0}
-    - <Description>k__BackingField: To Water Flowers
-      <QuestInteractable>k__BackingField: {fileID: 0}
-    - <Description>k__BackingField: Eat Buttons
-      <QuestInteractable>k__BackingField: {fileID: 0}
-    - <Description>k__BackingField: Go To Sleep
-      <QuestInteractable>k__BackingField: {fileID: 0}
-  - <Ambience>k__BackingField: 0
-    <Quests>k__BackingField:
-    - <Description>k__BackingField: Make The Bed
-      <QuestInteractable>k__BackingField: {fileID: 0}
-    - <Description>k__BackingField: Get Mop
-      <QuestInteractable>k__BackingField: {fileID: 0}
-    - <Description>k__BackingField: Clean Up The Blood
-      <QuestInteractable>k__BackingField: {fileID: 0}
-    - <Description>k__BackingField: Take BodyParts
-      <QuestInteractable>k__BackingField: {fileID: 0}
-    - <Description>k__BackingField: Put Into Fridge
-      <QuestInteractable>k__BackingField: {fileID: 0}
-    - <Description>k__BackingField: "Get Watering \u0421an"
-      <QuestInteractable>k__BackingField: {fileID: 0}
-    - <Description>k__BackingField: To Water Flowers
-      <QuestInteractable>k__BackingField: {fileID: 0}
-    - <Description>k__BackingField: Eat Buttons
-      <QuestInteractable>k__BackingField: {fileID: 0}
-    - <Description>k__BackingField: Leave his home
-      <QuestInteractable>k__BackingField: {fileID: 0}
+      <QuestInteractable>k__BackingField: {fileID: 1582123943}
   _startDay: 0
   _startQuestIndex: 0
 --- !u!4 &1239929710
@@ -2971,6 +2980,17 @@ Transform:
   - {fileID: 1815274480}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1245300654 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5003977519237177662, guid: 4696ff71d9631ae458ffe8cf9a5b9b80, type: 3}
+  m_PrefabInstance: {fileID: 1551203345}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 346dcace4e7341b59e9758b40deaaaaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1252536460
 GameObject:
   m_ObjectHideFlags: 0
@@ -3806,6 +3826,79 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5083417720226749159, guid: 1b730426d74ee6745a48c95c46d4e953, type: 3}
   m_PrefabInstance: {fileID: 4463917658015735805}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1551203345
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1539945198469754706, guid: 4696ff71d9631ae458ffe8cf9a5b9b80, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -9.945
+      objectReference: {fileID: 0}
+    - target: {fileID: 1539945198469754706, guid: 4696ff71d9631ae458ffe8cf9a5b9b80, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.48625
+      objectReference: {fileID: 0}
+    - target: {fileID: 1539945198469754706, guid: 4696ff71d9631ae458ffe8cf9a5b9b80, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -12.431252
+      objectReference: {fileID: 0}
+    - target: {fileID: 1539945198469754706, guid: 4696ff71d9631ae458ffe8cf9a5b9b80, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1539945198469754706, guid: 4696ff71d9631ae458ffe8cf9a5b9b80, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1539945198469754706, guid: 4696ff71d9631ae458ffe8cf9a5b9b80, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1539945198469754706, guid: 4696ff71d9631ae458ffe8cf9a5b9b80, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1539945198469754706, guid: 4696ff71d9631ae458ffe8cf9a5b9b80, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1539945198469754706, guid: 4696ff71d9631ae458ffe8cf9a5b9b80, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 1539945198469754706, guid: 4696ff71d9631ae458ffe8cf9a5b9b80, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3149971339977444989, guid: 4696ff71d9631ae458ffe8cf9a5b9b80, type: 3}
+      propertyPath: m_Name
+      value: BedRoom
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4696ff71d9631ae458ffe8cf9a5b9b80, type: 3}
+--- !u!4 &1558745017 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3188302211162012412, guid: c322cc7c326b17442aa5bf8abeb03c7e, type: 3}
+  m_PrefabInstance: {fileID: 925726403}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1582123943 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 754539856991170497, guid: 4696ff71d9631ae458ffe8cf9a5b9b80, type: 3}
+  m_PrefabInstance: {fileID: 1551203345}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 346dcace4e7341b59e9758b40deaaaaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1583695930
 GameObject:
   m_ObjectHideFlags: 0
@@ -3898,7 +3991,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1623097837
 Transform:
   m_ObjectHideFlags: 0
@@ -4366,7 +4459,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1879638429
 Transform:
   m_ObjectHideFlags: 0
@@ -5511,7 +5604,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2074123148
 Transform:
   m_ObjectHideFlags: 0
@@ -5935,6 +6028,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 666927017739612693, guid: 921a743bcc9e49c47b7e8d66cbf457f8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 691260906631608961, guid: 921a743bcc9e49c47b7e8d66cbf457f8, type: 3}
       propertyPath: m_LocalPosition.x
       value: -9.945
@@ -6009,7 +6106,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 691260906631608961, guid: 921a743bcc9e49c47b7e8d66cbf457f8, type: 3}
+      insertIndex: 14
+      addedObject: {fileID: 1558745017}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 921a743bcc9e49c47b7e8d66cbf457f8, type: 3}
 --- !u!1001 &4246944704949796542
@@ -6068,10 +6168,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: ClosetMiniGame
       objectReference: {fileID: 0}
+    - target: {fileID: 6627442093760725149, guid: 7147af7caa4d2c9448f1de87d4712bdd, type: 3}
+      propertyPath: _camera
+      value: 
+      objectReference: {fileID: 377210298}
+    - target: {fileID: 6627442093760725149, guid: 7147af7caa4d2c9448f1de87d4712bdd, type: 3}
+      propertyPath: _clothesInteractable
+      value: 
+      objectReference: {fileID: 472254068}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3824761074813479632, guid: 7147af7caa4d2c9448f1de87d4712bdd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 472254068}
   m_SourcePrefab: {fileID: 100100000, guid: 7147af7caa4d2c9448f1de87d4712bdd, type: 3}
 --- !u!1001 &4463917658015735805
 PrefabInstance:
@@ -6274,3 +6385,4 @@ SceneRoots:
   - {fileID: 3827104582650200395}
   - {fileID: 8283510890203636568}
   - {fileID: 4246944704949796542}
+  - {fileID: 1551203345}

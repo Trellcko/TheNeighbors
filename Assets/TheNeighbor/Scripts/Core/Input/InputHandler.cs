@@ -10,6 +10,8 @@ namespace Trellcko.Core.Input
 
         public Vector2 GetMoveVector() => _actions.Player.Move.ReadValue<Vector2>();
         public Vector2 GetMouseDelta() => _actions.Player.Rotation.ReadValue<Vector2>();
+        public Vector2 GetMousePosition() => Mouse.current.position.ReadValue();
+
         public event Action<Vector2> Moved;
         public event Action MovedCanceled;
         public event Action Sprint;
