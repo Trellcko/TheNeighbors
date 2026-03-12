@@ -1182,11 +1182,48 @@ MonoBehaviour:
   _monsterPoint: {fileID: 165103970}
   _questInteractable: {fileID: 0}
   _item: 2
+--- !u!114 &472254063 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8740223343695697982, guid: 7147af7caa4d2c9448f1de87d4712bdd, type: 3}
+  m_PrefabInstance: {fileID: 4246944704949796542}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6a0b33355b8fe94682bacc1b4796536, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &472254068 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2140830671425920910, guid: 7147af7caa4d2c9448f1de87d4712bdd, type: 3}
+  m_PrefabInstance: {fileID: 4246944704949796542}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bc2a97d58191ea4d96ba9860eb033c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &509137422 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5279306810368843054, guid: 7147af7caa4d2c9448f1de87d4712bdd, type: 3}
   m_PrefabInstance: {fileID: 4246944704949796542}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &509137425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 509137422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 787e29a0f7dc448e935507ecc4a78ae0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _clothesInteractable: {fileID: 472254068}
+  _closetInteractableOutline: {fileID: 1511085461}
+  _rayLength: 2.5
 --- !u!1 &554487579
 GameObject:
   m_ObjectHideFlags: 0
@@ -3734,6 +3771,17 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 1
   m_TargetDisplay: 0
+--- !u!114 &1511085461 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3161237219418557676, guid: 7147af7caa4d2c9448f1de87d4712bdd, type: 3}
+  m_PrefabInstance: {fileID: 4246944704949796542}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6a0b33355b8fe94682bacc1b4796536, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1523599051
 GameObject:
   m_ObjectHideFlags: 0
@@ -6119,6 +6167,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2140830671425920910, guid: 7147af7caa4d2c9448f1de87d4712bdd, type: 3}
+      propertyPath: _clothesSpriteData._clothesSprites.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2140830671425920910, guid: 7147af7caa4d2c9448f1de87d4712bdd, type: 3}
+      propertyPath: _clothesSpriteData._corpsesSprites.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2140830671425920910, guid: 7147af7caa4d2c9448f1de87d4712bdd, type: 3}
+      propertyPath: '_clothesSpriteData._clothesSprites.Array.data[0]'
+      value: 
+      objectReference: {fileID: 21300000, guid: 65135e4d96fba0e48a45fd7eb25f90ac, type: 3}
+    - target: {fileID: 2140830671425920910, guid: 7147af7caa4d2c9448f1de87d4712bdd, type: 3}
+      propertyPath: '_clothesSpriteData._corpsesSprites.Array.data[0]'
+      value: 
+      objectReference: {fileID: 21300000, guid: 65135e4d96fba0e48a45fd7eb25f90ac, type: 3}
     - target: {fileID: 5279306810368843054, guid: 7147af7caa4d2c9448f1de87d4712bdd, type: 3}
       propertyPath: m_Name
       value: ClosetMiniGame
@@ -6127,10 +6191,37 @@ PrefabInstance:
       propertyPath: _mainCanvas
       value: 
       objectReference: {fileID: 131146912}
+    - target: {fileID: 6627442093760725149, guid: 7147af7caa4d2c9448f1de87d4712bdd, type: 3}
+      propertyPath: _closetInteractableOutline
+      value: 
+      objectReference: {fileID: 1511085461}
+    - target: {fileID: 6627442093760725149, guid: 7147af7caa4d2c9448f1de87d4712bdd, type: 3}
+      propertyPath: _clothesInteractableOutline
+      value: 
+      objectReference: {fileID: 472254063}
+    - target: {fileID: 6627442093760725149, guid: 7147af7caa4d2c9448f1de87d4712bdd, type: 3}
+      propertyPath: _closetMiniGameData.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6627442093760725149, guid: 7147af7caa4d2c9448f1de87d4712bdd, type: 3}
+      propertyPath: _closetMiniGameData.Array.data[0].CorpseCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6627442093760725149, guid: 7147af7caa4d2c9448f1de87d4712bdd, type: 3}
+      propertyPath: _closetMiniGameData.Array.data[0].ClothesCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7464756589981221299, guid: 7147af7caa4d2c9448f1de87d4712bdd, type: 3}
+      propertyPath: m_Name
+      value: Closet
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5279306810368843054, guid: 7147af7caa4d2c9448f1de87d4712bdd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 509137425}
   m_SourcePrefab: {fileID: 100100000, guid: 7147af7caa4d2c9448f1de87d4712bdd, type: 3}
 --- !u!1001 &4463917658015735805
 PrefabInstance:

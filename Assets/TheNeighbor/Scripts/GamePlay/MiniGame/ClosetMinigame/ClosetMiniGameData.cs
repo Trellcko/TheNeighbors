@@ -6,6 +6,6 @@ namespace Trellcko.Gameplay.MiniGame
     public class ClosetMiniGameData
     {
         public int CorpseCount;
-        public int ClosetCount;
+        public int ClothesCount;
     }
 }

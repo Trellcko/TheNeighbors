@@ -1,4 +1,6 @@
 ﻿using System;
+using TheNeighbor.Scripts.Constants;
+using Trellcko.Constants;
 using Trellcko.Core.Input;
 using UnityEngine;
 using Zenject;
@@ -7,8 +9,11 @@ namespace Trellcko.Gameplay.MiniGame
 {
     public class ClothesDraggable : MonoBehaviour
     {
+        [SerializeField] private Material _material;
+        
         private Camera _camera;
         private IInputHandler _inputHandler;
+        public event Action<ClothesDraggable> Putted;
 
         [Inject]
         private void Construct(IInputHandler handler)
@@ -21,6 +26,11 @@ namespace Trellcko.Gameplay.MiniGame
             _camera = Camera.main;
         }
 
+        public void UpdateSprite(Sprite sprite)
+        {
+            _material.SetTexture(ShaderProperties.MainTex, sprite.texture);
+        }
+        
         private void Update()
         {
             Vector2 mouse = _inputHandler.GetMousePosition();
@@ -32,8 +42,9 @@ namespace Trellcko.Gameplay.MiniGame
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.TryGetComponent(out CabinetMiniGame cabinet))
+            if (other.TryGetComponent(out ClosetTag _))
             {
+                Putted?.Invoke(this);
                 Destroy(gameObject);
             }
         }

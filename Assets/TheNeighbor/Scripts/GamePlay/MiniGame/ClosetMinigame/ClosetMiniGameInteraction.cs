@@ -1,28 +1,26 @@
-using System;
-using TheNeighbor.Scripts.Constants;
+﻿using TheNeighbor.Scripts.Constants;
 using Trellcko.Core.Input;
 using Trellcko.Core.Physics;
+using Trellcko.Gameplay.Interactable;
 using Trellcko.Gameplay.QuestLogic;
 using UnityEngine;
 using Zenject;
 
-namespace Trellcko.Gameplay.Player
+namespace Trellcko.Gameplay.MiniGame
 {
-    public class PlayerInteractable : MonoBehaviour
+    public class ClosetMiniGameInteraction : MonoBehaviour
     {
+        [SerializeField] private ClothesInteractable _clothesInteractable;
+        [SerializeField] private InteractableOutline _closetInteractableOutline;
         [SerializeField] private float _rayLength;
-        [SerializeField] private Bringing _bringing;
-
-        public bool IsEnabled { get; set; } = true;
-        
-        private QuestItem _item;
         
         private IInputHandler _inputHandler;
-        private IInteractable _lastInteractable;
         private IRayGetter _rayGetter;
 
         private Camera _camera;
         private readonly RaycastHit[] _hits = new RaycastHit[5];
+
+        private InteractionState _interactionState = InteractionState.FinishedInteraction;
 
         [Inject]
         private void Inject(IInputHandler inputHandler)
@@ -35,6 +33,30 @@ namespace Trellcko.Gameplay.Player
             _inputHandler.MouseMoved += OnMoveInputInvoked;
             _inputHandler.Moved += OnMoveInputInvoked;
             _inputHandler.Interacted += OnInteractButtonClicked;
+            _clothesInteractable.Reseted += OnReseted;
+            _clothesInteractable.ClothesRunOut += OnClothesRunOut;
+            _clothesInteractable.ClothesGenerated += OnClothesGenerated;
+        }
+
+        private void OnClothesGenerated()
+        {
+            _clothesInteractable.InteractableOutline.Disable();
+            _closetInteractableOutline.EnableInteractOutline();
+            _interactionState = InteractionState.Dragging;
+        }
+
+        private void OnClothesRunOut()
+        {
+            _clothesInteractable.InteractableOutline.Disable();
+            _closetInteractableOutline.Disable();
+            _interactionState = InteractionState.FinishedInteraction;
+        }
+
+        private void OnReseted()
+        {
+            _closetInteractableOutline.Disable();
+            _clothesInteractable.InteractableOutline.EnableInteractOutline();
+            _interactionState = InteractionState.NeedToDrag;
         }
 
         private void OnDisable()
@@ -52,15 +74,9 @@ namespace Trellcko.Gameplay.Player
 
         private void ResetRayCameraGetter()
         {
-            _rayGetter = new RayCameraGetter(_camera);
+            _rayGetter = new RayMouseGetter(_inputHandler ,_camera);
         }
-
-        public void SetItem(QuestItem item)
-        {
-            _item = item;
-            _bringing.SetItem(item);
-        }
-
+        
         private void OnMoveInputInvoked(Vector2 obj)
         {
             CheckForSelectables();
@@ -68,29 +84,23 @@ namespace Trellcko.Gameplay.Player
 
         private void CheckForSelectables()
         {
-            if(!IsEnabled) return;
-            
-            _lastInteractable?.InteractableOutline?.EnableInteractOutline(false);
-            if (TryGetInteractable(out IInteractable questInteractable))
+            if(_interactionState != InteractionState.NeedToDrag) return;
+            if (TryGetInteractable(out ClothesInteractable questInteractable))
             {
                 if (questInteractable.IsInteractable)
                 {
                     questInteractable.InteractableOutline?.EnableSelectOutline();
-                    _lastInteractable = questInteractable;
                 }
             }
             else
             {
-                if (_lastInteractable is not QuestInteractable)
-                {
-                    _lastInteractable?.InteractableOutline?.Disable();
-                }
+                _clothesInteractable.InteractableOutline?.EnableInteractOutline();
             }
         }
 
-        private bool TryGetInteractable(out IInteractable questInteractable)
+        private bool TryGetInteractable(out ClothesInteractable interactable)
         {
-            questInteractable = null;
+            interactable = null;
             Ray ray = _rayGetter.GetRay();
             Debug.DrawRay(ray.origin, ray.direction * _rayLength, Color.red);
             int count = Physics.RaycastNonAlloc(ray, _hits, _rayLength, Layers.Interactable);
@@ -99,31 +109,30 @@ namespace Trellcko.Gameplay.Player
             {
                 if (_hits[i].distance < maxDistance)
                 {
-                    if (_hits[i].transform.TryGetComponent(out questInteractable))
+                    if (_hits[i].transform.TryGetComponent(out interactable))
                     {
                         maxDistance = _hits[i].distance;
                     }
                 }
             }
         
-            return questInteractable != null;
+            return interactable;
         }
 
         private void OnInteractButtonClicked()
         {
-            if (TryGetInteractable(out IInteractable questInteractable))
+            if(_interactionState != InteractionState.NeedToDrag) return;
+            if (TryGetInteractable(out ClothesInteractable questInteractable))
             {
-                if(_lastInteractable == questInteractable && _lastInteractable.IsInteractable)
-                    _lastInteractable?.InteractableOutline?.EnableSelectOutline();
-                
-                if(questInteractable.TryInteract(out QuestItem tempItem, _item))
-                {
-                    _bringing.SetItem(QuestItem.None);
-                    _item = tempItem;
-                    _bringing.SetItem(_item);
-                    _lastInteractable = questInteractable;
-                }
+                questInteractable.TryInteract(out QuestItem tempItem, QuestItem.None);
             }
         }
+    }
+
+    public enum InteractionState
+    {
+        NeedToDrag,
+        Dragging,
+        FinishedInteraction,
     }
 }

@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Trellcko.Gameplay.MiniGame
 {
-    public class CabinetMiniGame : MonoBehaviour
+    public class ClosetTag : MonoBehaviour
     {
 
     }
