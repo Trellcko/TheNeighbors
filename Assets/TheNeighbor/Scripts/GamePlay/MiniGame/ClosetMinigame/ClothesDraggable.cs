@@ -1,4 +1,5 @@
-﻿using Trellcko.Core.Input;
+﻿using System;
+using Trellcko.Core.Input;
 using UnityEngine;
 using Zenject;
 
@@ -7,7 +8,6 @@ namespace Trellcko.Gameplay.MiniGame
     public class ClothesDraggable : MonoBehaviour
     {
         private Camera _camera;
-        private Plane _dragPlane;
         private IInputHandler _inputHandler;
 
         [Inject]
@@ -19,19 +19,22 @@ namespace Trellcko.Gameplay.MiniGame
         private void Awake()
         {
             _camera = Camera.main;
-            _dragPlane = new Plane(Vector3.up, transform.position);
         }
 
         private void Update()
         {
-            Vector2 mousePosition = _inputHandler.GetMousePosition();
+            Vector2 mouse = _inputHandler.GetMousePosition();
+            float depth = transform.position.z - _camera.transform.position.z;
+            Vector3 screen = new(mouse.x, mouse.y, depth);
+            Vector3 world = _camera.ScreenToWorldPoint(screen);
+            transform.position = new(world.x, world.y, transform.position.z);
+        }
 
-            Ray ray = _camera.ScreenPointToRay(mousePosition);
-
-            if (_dragPlane.Raycast(ray, out float distance))
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.TryGetComponent(out CabinetMiniGame cabinet))
             {
-                Vector3 point = ray.GetPoint(distance);
-                transform.position = point;
+                Destroy(gameObject);
             }
         }
     }

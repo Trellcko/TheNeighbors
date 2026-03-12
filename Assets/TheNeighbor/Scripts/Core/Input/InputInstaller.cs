@@ -7,6 +7,7 @@ namespace Trellcko.Core.Input
         public override void InstallBindings()
         {
             Container.Bind<IInputHandler>().To<InputHandler>().AsSingle();
+            Container.Bind<ICursorController>().To<CursorController>().AsSingle();
         }
     }
 }

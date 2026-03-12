@@ -1,6 +1,7 @@
 using System;
 using TheNeighbor.Scripts.Constants;
 using Trellcko.Core.Input;
+using Trellcko.Core.Physics;
 using Trellcko.Gameplay.QuestLogic;
 using UnityEngine;
 using Zenject;
@@ -18,6 +19,7 @@ namespace Trellcko.Gameplay.Player
         
         private IInputHandler _inputHandler;
         private IInteractable _lastInteractable;
+        private IRayGetter _rayGetter;
 
         private Camera _camera;
         private readonly RaycastHit[] _hits = new RaycastHit[5];
@@ -45,6 +47,17 @@ namespace Trellcko.Gameplay.Player
         private void Awake()
         {
             _camera = Camera.main;
+            ResetRayCameraGetter();
+        }
+
+        public void ResetRayCameraGetter()
+        {
+            _rayGetter = new RayCameraGetter(_camera);
+        }
+
+        public void SetRayCameraGetter(IRayGetter rayGetter)
+        {
+            _rayGetter = rayGetter;
         }
 
         public void SetItem(QuestItem item)
@@ -52,7 +65,7 @@ namespace Trellcko.Gameplay.Player
             _item = item;
             _bringing.SetItem(item);
         }
-        
+
         private void OnMoveInputInvoked(Vector2 obj)
         {
             CheckForSelectables();
@@ -83,8 +96,8 @@ namespace Trellcko.Gameplay.Player
         private bool TryGetInteractable(out IInteractable questInteractable)
         {
             questInteractable = null;
-            Ray ray = new(_camera.transform.position, _camera.transform.forward);
-            Debug.DrawRay(_camera.transform.position, _camera.transform.forward * _rayLength, Color.red);
+            Ray ray = _rayGetter.GetRay();
+            Debug.DrawRay(ray.origin, ray.direction * _rayLength, Color.red);
             int count = Physics.RaycastNonAlloc(ray, _hits, _rayLength, Layers.Interactable);
             float maxDistance = float.MaxValue;
             for (int i = 0; i < count; i++)

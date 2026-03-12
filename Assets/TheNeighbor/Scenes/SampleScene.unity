@@ -1013,17 +1013,6 @@ MonoBehaviour:
   _monsterPoint: {fileID: 2039651817}
   _questInteractable: {fileID: 0}
   _item: 3
---- !u!114 &377210298 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 274694756533771414, guid: 7147af7caa4d2c9448f1de87d4712bdd, type: 3}
-  m_PrefabInstance: {fileID: 4246944704949796542}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9dfa5b682dcd46bda6128250e975f58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &381850260
 GameObject:
   m_ObjectHideFlags: 0
@@ -1193,36 +1182,6 @@ MonoBehaviour:
   _monsterPoint: {fileID: 165103970}
   _questInteractable: {fileID: 0}
   _item: 2
---- !u!1 &472254058 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3824761074813479632, guid: 7147af7caa4d2c9448f1de87d4712bdd, type: 3}
-  m_PrefabInstance: {fileID: 4246944704949796542}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &472254063 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8740223343695697982, guid: 7147af7caa4d2c9448f1de87d4712bdd, type: 3}
-  m_PrefabInstance: {fileID: 4246944704949796542}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 472254058}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6a0b33355b8fe94682bacc1b4796536, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &472254068
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 472254058}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bc2a97d58191ea4d96ba9860eb033c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <InteractableOutline>k__BackingField: {fileID: 472254063}
-  _clothesPrefab: {fileID: 6475956729686625378, guid: e9c1b3f9c17ee14409332e0eaf6832bf, type: 3}
 --- !u!1 &509137422 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5279306810368843054, guid: 7147af7caa4d2c9448f1de87d4712bdd, type: 3}
@@ -3080,7 +3039,7 @@ GameObject:
   - component: {fileID: 1264236023}
   - component: {fileID: 1264236022}
   m_Layer: 0
-  m_Name: Image
+  m_Name: Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6120,10 +6079,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 274694756533771414, guid: 7147af7caa4d2c9448f1de87d4712bdd, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1149494965360048922, guid: 7147af7caa4d2c9448f1de87d4712bdd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 17.51
@@ -6169,20 +6124,13 @@ PrefabInstance:
       value: ClosetMiniGame
       objectReference: {fileID: 0}
     - target: {fileID: 6627442093760725149, guid: 7147af7caa4d2c9448f1de87d4712bdd, type: 3}
-      propertyPath: _camera
+      propertyPath: _mainCanvas
       value: 
-      objectReference: {fileID: 377210298}
-    - target: {fileID: 6627442093760725149, guid: 7147af7caa4d2c9448f1de87d4712bdd, type: 3}
-      propertyPath: _clothesInteractable
-      value: 
-      objectReference: {fileID: 472254068}
+      objectReference: {fileID: 131146912}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3824761074813479632, guid: 7147af7caa4d2c9448f1de87d4712bdd, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 472254068}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7147af7caa4d2c9448f1de87d4712bdd, type: 3}
 --- !u!1001 &4463917658015735805
 PrefabInstance:
@@ -6348,6 +6296,10 @@ PrefabInstance:
     - target: {fileID: 8238768313227884401, guid: ff1d35ae0e970014fb2dbe1408c825f7, type: 3}
       propertyPath: m_Name
       value: MirrorMiniGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 8238768313227884401, guid: ff1d35ae0e970014fb2dbe1408c825f7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8347734737792297176, guid: ff1d35ae0e970014fb2dbe1408c825f7, type: 3}
       propertyPath: m_Enabled

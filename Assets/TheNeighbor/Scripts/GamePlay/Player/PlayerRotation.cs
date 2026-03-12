@@ -17,10 +17,12 @@ namespace Trellcko.Gameplay.Player
         private float _totalY;
 
         private Vector3 _startAngel;
-        
+        private ICursorController _cursorController;
+
         [Inject]
-        private void Inject(IInputHandler inputHandler)
+        private void Inject(IInputHandler inputHandler, ICursorController cursorController)
         {
+            _cursorController = cursorController;
             _input = inputHandler;
         }
 
@@ -28,8 +30,7 @@ namespace Trellcko.Gameplay.Player
         {
             _currentPitch = transform.eulerAngles.x;
             _totalY = transform.eulerAngles.y;
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
+            _cursorController.LockCursor();
         }
 
         private void Update()

@@ -28,7 +28,8 @@ namespace Trellcko.Gameplay.MiniGame
         {
             getItem = neededItem;
             if (!IsInteractable) return false;
-            _container.InstantiatePrefab(_clothesPrefab);
+            GameObject clothesInstance = _container.InstantiatePrefab(_clothesPrefab);
+            clothesInstance.transform.position = transform.position;
             IsInteractable = false;
             return true;
         }
