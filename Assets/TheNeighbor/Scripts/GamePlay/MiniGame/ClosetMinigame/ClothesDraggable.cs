@@ -29,6 +29,13 @@ namespace Trellcko.Gameplay.MiniGame
         public void UpdateSprite(Sprite sprite)
         {
             _material.SetTexture(ShaderProperties.MainTex, sprite.texture);
+
+            float width = sprite.rect.width / sprite.pixelsPerUnit;
+            float height = sprite.rect.height / sprite.pixelsPerUnit;
+
+            transform.localScale = new(width, height, 1f);
+
+            _material.SetTextureScale(ShaderProperties.MainTex, Vector2.one);
         }
         
         private void Update()

@@ -38,7 +38,7 @@ namespace Trellcko.Gameplay.MiniGame
             _clothesInteractable.ClothesGenerated += OnClothesGenerated;
         }
 
-        private void OnClothesGenerated()
+        private void OnClothesGenerated(bool isCorpse)
         {
             _clothesInteractable.InteractableOutline.Disable();
             _closetInteractableOutline.EnableInteractOutline();

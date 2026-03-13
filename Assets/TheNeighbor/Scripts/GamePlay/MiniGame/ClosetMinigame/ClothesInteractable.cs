@@ -26,10 +26,9 @@ namespace Trellcko.Gameplay.MiniGame
         
         private Sequence _corpseEffectSequence;
         
-        private ClosetMiniGameData _closetMiniGameData;
         private DiContainer _container;
 
-        public event Action ClothesGenerated;
+        public event Action<bool> ClothesGenerated;
         public event Action Reseted;
         public event Action ClothesRunOut;
         public event Action Interacted;
@@ -48,7 +47,6 @@ namespace Trellcko.Gameplay.MiniGame
 
         public void SetMiniGameData(ClosetMiniGameData closetMiniGameData)
         {
-            _closetMiniGameData = closetMiniGameData;
             _currentClothes = closetMiniGameData.ClothesCount;
             _currentCorpses = closetMiniGameData.CorpseCount;
             IsInteractable = true;
@@ -67,7 +65,7 @@ namespace Trellcko.Gameplay.MiniGame
             {
                 PlayCorpseEffect();
             }
-            ClothesGenerated?.Invoke();
+            ClothesGenerated?.Invoke(isCorpse);
             IsInteractable = false;
             return true;
         }
@@ -124,11 +122,16 @@ namespace Trellcko.Gameplay.MiniGame
 
             if (_currentClothes <= 0)
                 takeFirst = false;
+            else
+            {
+                takeFirst = true;
+            }
+            /*
             else if (_currentCorpses <= 0)
                 takeFirst = true;
             else
                 takeFirst = UnityEngine.Random.Range(0, 1f) > 0.5f;
-
+            */
             if (takeFirst)
             {
                 _currentClothes--;
