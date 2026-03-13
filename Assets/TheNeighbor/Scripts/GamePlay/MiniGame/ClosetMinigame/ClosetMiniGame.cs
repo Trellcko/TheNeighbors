@@ -59,6 +59,12 @@ namespace Trellcko.Gameplay.MiniGame
             _playerFacade.PlayerRotation.IsEnabled = false;
             _playerFacade.Interactable.IsEnabled = false;
             _clothesInteractable.SetMiniGameData(_closetMiniGameData[0]);
+            _clothesInteractable.ClothesRunOut += OnClothesRunOut;
+        }
+
+        private void OnClothesRunOut()
+        {
+            FinishGame(true);
         }
 
 

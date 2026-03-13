@@ -217,6 +217,77 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!1 &3013009053859675304
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 908893106478117918}
+  - component: {fileID: 6145327052990513752}
+  - component: {fileID: 5920944144761993227}
+  m_Layer: 0
+  m_Name: Volume
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &908893106478117918
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3013009053859675304}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.91, y: -0.4379488, z: -7.81}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1149494965360048922}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &6145327052990513752
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3013009053859675304}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.876972, y: 4.3699236, z: 2.8725233}
+  m_Center: {x: -0.06334436, y: 1.6849618, z: -0.93626165}
+--- !u!114 &5920944144761993227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3013009053859675304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IsGlobal: 0
+  priority: 1
+  blendDistance: 1
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: 805a9bb4772f8894ab17b8b61508dc34, type: 2}
 --- !u!1 &3347301013114975094
 GameObject:
   m_ObjectHideFlags: 0
@@ -370,6 +441,7 @@ GameObject:
   - component: {fileID: 4553337571535230293}
   - component: {fileID: 5122854905971381874}
   - component: {fileID: 2140830671425920910}
+  - component: {fileID: 3359474440813598213}
   m_Layer: 6
   m_Name: Clothes
   m_TagString: Untagged
@@ -849,8 +921,112 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bc2a97d58191ea4d96ba9860eb033c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  volume: {fileID: 5920944144761993227}
   <InteractableOutline>k__BackingField: {fileID: 8740223343695697982}
   _clothesPrefab: {fileID: 6475956729686625378, guid: e9c1b3f9c17ee14409332e0eaf6832bf, type: 3}
+  _clothesSpriteData:
+    _clothesSprites:
+    - {fileID: 21300000, guid: 65135e4d96fba0e48a45fd7eb25f90ac, type: 3}
+    _corpsesSprites:
+    - {fileID: 21300000, guid: 65135e4d96fba0e48a45fd7eb25f90ac, type: 3}
+  _corpseAudioEffect: {fileID: 3359474440813598213}
+--- !u!82 &3359474440813598213
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3824761074813479632}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: -2818765983681015942, guid: 86a792cb98be2004081c69d34f0ecea3, type: 2}
+  m_audioClip: {fileID: 8300000, guid: c714e983a82a3c44c87022d1541bfddd, type: 3}
+  m_Resource: {fileID: 8300000, guid: c714e983a82a3c44c87022d1541bfddd, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &4330691745863192000
 GameObject:
   m_ObjectHideFlags: 0
@@ -907,6 +1083,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1149494965360048922}
   - component: {fileID: 6627442093760725149}
+  - component: {fileID: 3088605644833872915}
   m_Layer: 0
   m_Name: ClosetMiniGame
   m_TagString: Untagged
@@ -945,6 +1122,7 @@ Transform:
   - {fileID: 7937159077149813627}
   - {fileID: 3394732702015395121}
   - {fileID: 4657462459114074213}
+  - {fileID: 908893106478117918}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6627442093760725149
@@ -959,12 +1137,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95c691196ebd32f45822c23e69ca1245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _closetMiniGameData: []
+  _closetMiniGameData:
+  - CorpseCount: 1
+    ClothesCount: 1
   _clothesInteractable: {fileID: 2140830671425920910}
   _camera: {fileID: 274694756533771414}
   _mainCanvas: {fileID: 0}
   _miniGameCanvas: {fileID: 2666536533097743601}
   _dot: {fileID: 5772852583236831604}
+--- !u!114 &3088605644833872915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5279306810368843054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 787e29a0f7dc448e935507ecc4a78ae0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _clothesInteractable: {fileID: 2140830671425920910}
+  _closetInteractableOutline: {fileID: 3161237219418557676}
+  _rayLength: 2.5
 --- !u!1 &6286052584477032213
 GameObject:
   m_ObjectHideFlags: 0
@@ -1470,7 +1665,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7875440157833253401}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f9dfa5b682dcd46bda6128250e975f58, type: 3}
   m_Name: 
@@ -2876,7 +3071,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2027625225287306373, guid: 4e02e23b207aaa74096ddb7ca397d9db, type: 3}
       propertyPath: m_Name
-      value: Cabinet
+      value: Closet
       objectReference: {fileID: 0}
     - target: {fileID: 5793122770038981082, guid: 4e02e23b207aaa74096ddb7ca397d9db, type: 3}
       propertyPath: _highlightEffect
@@ -2958,6 +3153,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8061399172044868566, guid: 4e02e23b207aaa74096ddb7ca397d9db, type: 3}
   m_PrefabInstance: {fileID: 8915921062945443126}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3161237219418557676 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5793122770038981082, guid: 4e02e23b207aaa74096ddb7ca397d9db, type: 3}
+  m_PrefabInstance: {fileID: 8915921062945443126}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7464756589981221299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6a0b33355b8fe94682bacc1b4796536, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7464756589981221299 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2027625225287306373, guid: 4e02e23b207aaa74096ddb7ca397d9db, type: 3}
