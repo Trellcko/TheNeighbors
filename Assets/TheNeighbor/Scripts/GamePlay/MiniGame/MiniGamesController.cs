@@ -56,6 +56,7 @@ namespace Trellcko.Gameplay.MiniGame
    public enum MiniGameType
    {
       WindowMiniGame,
-      ClosetMiniGame
+      ClosetMiniGame,
+      CookiesMiniGame,
    }
 }

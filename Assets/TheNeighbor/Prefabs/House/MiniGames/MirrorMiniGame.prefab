@@ -219,7 +219,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_IsGlobal: 0
-  priority: 0
+  priority: 1
   blendDistance: 1
   weight: 1
   sharedProfile: {fileID: 11400000, guid: 805a9bb4772f8894ab17b8b61508dc34, type: 2}
@@ -378,7 +378,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7859265640068675295
 RectTransform:
   m_ObjectHideFlags: 0
@@ -543,7 +543,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4346005592014725558}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f9dfa5b682dcd46bda6128250e975f58, type: 3}
   m_Name: 
@@ -1461,9 +1461,15 @@ MonoBehaviour:
     time: 35
     fallDownSpeed: 0.001
   _slider: {fileID: 6062218051444112935}
-  _UI: {fileID: 0}
+  _UI: {fileID: 3216615380187335835}
   _camera: {fileID: 8347734737792297176}
   _timer: {fileID: 6653272878613659703}
+  _playerMeshRenderer: {fileID: 4976149020338516288}
+  _playerMaterials:
+  - {fileID: 2100000, guid: 4d51853a0712af84d83a7cf768ffdd99, type: 2}
+  - {fileID: 2100000, guid: fc29831bd62b6bb4ca53925940fc8658, type: 2}
+  - {fileID: 2100000, guid: e6829d756c44ff544bbc189dfe21fde1, type: 2}
+  - {fileID: 2100000, guid: dcf582429e3017147a6e77cc5daa4f22, type: 2}
 --- !u!1 &8274763072815979913
 GameObject:
   m_ObjectHideFlags: 0

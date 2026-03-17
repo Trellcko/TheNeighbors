@@ -1,4 +1,5 @@
 using Trellcko.Gameplay.MiniGame;
+using Trellcko.Gameplay.Player;
 using Trellcko.Gameplay.QuestLogic;
 using UnityEngine;
 using Zenject;
@@ -13,7 +14,7 @@ namespace Trellcko.Gameplay.Interactable
         private MiniGamesController _minigameController;
 
         [Inject]
-        private void Construct(MiniGamesController controller)
+        private void Construct(MiniGamesController controller, PlayerFacade playerFacade)
         {
             _minigameController = controller;
         }

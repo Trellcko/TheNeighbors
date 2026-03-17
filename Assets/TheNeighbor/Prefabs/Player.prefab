@@ -192,7 +192,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _itemsToBring:
-  - Sprite: {fileID: 2800000, guid: 4e823e8736ec99346826ad7c46a4f130, type: 3}
+  - Sprite: {fileID: 2800000, guid: f10253c13aff24b4b80b72e719a908a6, type: 3}
     Item: 1
     Offset: {x: 0, y: 0, z: 0}
   - Sprite: {fileID: 2800000, guid: 5201dd164dffd3d488cb054a364b9f64, type: 3}
