@@ -11,6 +11,8 @@ namespace Trellcko.Gameplay.MiniGame
 {
     public class CookiesMiniGame : MonoBehaviour, IMiniGame
     {
+        [SerializeField] private Vector3 _handStartPosition;
+        [SerializeField] private HandController _handController;
         [SerializeField] private CinemachineCamera _cinemachineCamera;
         [SerializeField] private List<CookiesMiniGameData> _cookiesMiniGameData;
         private PlayerFacade _playerFacade;
@@ -20,7 +22,7 @@ namespace Trellcko.Gameplay.MiniGame
         public event Action<bool, IMiniGame> Finished;
 
         [Inject]
-        private void Construct(PlayerFacade playerFacade, QuestSystem questSystem)
+        private void Construct(PlayerFacade playerFacade)
         {
             _playerFacade = playerFacade;
         }
@@ -28,9 +30,11 @@ namespace Trellcko.Gameplay.MiniGame
         public void StartGame()
         {
             IsStarted = true;
+            _handController.transform.localPosition = _handStartPosition;
             _playerFacade.PlayerMovement.IsEnabled = false;
             _playerFacade.PlayerRotation.IsEnabled = false;
             _playerFacade.Interactable.IsEnabled = false;
+            _handController.enabled = true;
             _cinemachineCamera.enabled = true;
         }
 
@@ -42,6 +46,7 @@ namespace Trellcko.Gameplay.MiniGame
 
         public void ExitGame()
         {
+            _handController.enabled = false;
             _playerFacade.PlayerMovement.IsEnabled = true;
             _playerFacade.PlayerRotation.IsEnabled = true;
             _playerFacade.Interactable.IsEnabled = true;
