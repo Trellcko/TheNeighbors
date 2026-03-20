@@ -18,7 +18,7 @@ namespace Trellcko.Gameplay.MiniGame
         [SerializeField] private GameObject _mainCanvas;
         [SerializeField] private GameObject _miniGameCanvas;
         [SerializeField] private RectTransform _dot;
-        public bool IsStarted { get; private set; }
+        public bool IsPlaying { get; private set; }
         public MiniGameType MinigameType => MiniGameType.ClosetMiniGame;
 
         private PlayerFacade _playerFacade;
@@ -44,13 +44,13 @@ namespace Trellcko.Gameplay.MiniGame
 
         private void Update()
         {
-            if (IsStarted) 
+            if (IsPlaying) 
                 _dot.position = _inputHandler.GetMousePosition();
         }
 
         public void StartGame()
         {
-            IsStarted = true;
+            IsPlaying = true;
             _miniGameCanvas.SetActive(true);
             _mainCanvas.SetActive(false);
             _cursorController.UnlockCursor();
@@ -75,7 +75,7 @@ namespace Trellcko.Gameplay.MiniGame
 
         public void ExitGame()
         {
-            IsStarted = false;
+            IsPlaying = false;
             _cursorController.LockCursor();
             _miniGameCanvas.SetActive(false);
             _mainCanvas.SetActive(true);

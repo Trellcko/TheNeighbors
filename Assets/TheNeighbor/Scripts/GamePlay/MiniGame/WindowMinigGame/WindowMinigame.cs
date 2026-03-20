@@ -21,7 +21,7 @@ namespace Trellcko.Gameplay.MiniGame
         [SerializeField] private TextMeshProUGUI _timer;
         [SerializeField] private MeshRenderer _playerMeshRenderer;
         [SerializeField] private Material[] _playerMaterials;
-        public bool IsStarted { get; private set; }
+        public bool IsPlaying { get; private set; }
 
         private QuestSystem _questSystem;
         private IInputHandler _inputHandler;
@@ -43,7 +43,7 @@ namespace Trellcko.Gameplay.MiniGame
         {
             _slider.fillAmount = 0;
             
-            IsStarted = true;
+            IsPlaying = true;
             _UI.SetActive(true);
             _playerFacade.PlayerMovement.IsEnabled = false;
             _playerFacade.PlayerRotation.IsEnabled = false;
@@ -63,7 +63,7 @@ namespace Trellcko.Gameplay.MiniGame
         public void FinishGame(bool success)
         {
             Finished?.Invoke(success, this);
-            IsStarted = false;
+            IsPlaying = false;
         }
 
         public void ExitGame()

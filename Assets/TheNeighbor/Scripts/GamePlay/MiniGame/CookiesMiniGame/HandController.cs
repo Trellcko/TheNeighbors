@@ -1,3 +1,4 @@
+using System;
 using Trellcko.Core.Input;
 using UnityEngine;
 using Zenject;
@@ -9,6 +10,8 @@ namespace Trellcko.Gameplay.MiniGame
         [SerializeField] private Vector3 _handStartPosition;
         [SerializeField] private float _sensitivity = 40;
         [SerializeField] private Vector2 _zLocalBounds;
+
+        private event Action<bool> CookieGot;
         
         private IInputHandler _inputHandler;
 
@@ -18,10 +21,6 @@ namespace Trellcko.Gameplay.MiniGame
             _inputHandler = inputHandler;
         }
 
-        public void Reset()
-        {
-            transform.localPosition = _handStartPosition;
-        }
 
         private void Update()
         {
@@ -34,6 +33,20 @@ namespace Trellcko.Gameplay.MiniGame
             newPosition.z  = Mathf.Clamp(newPosition.z, _zLocalBounds.x, _zLocalBounds.y);
             
             transform.localPosition = newPosition;
+        }
+
+        public void Reset()
+        {
+            transform.localPosition = _handStartPosition;
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.TryGetComponent(out Cookie cookie))
+            {
+                CookieGot?.Invoke(cookie.IsGood);
+                Destroy(cookie.gameObject);
+            }
         }
     }
 }

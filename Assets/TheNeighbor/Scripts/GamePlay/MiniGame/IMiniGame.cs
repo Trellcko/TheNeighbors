@@ -4,7 +4,7 @@ namespace Trellcko.Gameplay.MiniGame
 {
     public interface IMiniGame
     {
-        bool IsStarted { get; }
+        bool IsPlaying { get; }
         MiniGameType MinigameType { get; }
         void StartGame();
         void FinishGame(bool success);
