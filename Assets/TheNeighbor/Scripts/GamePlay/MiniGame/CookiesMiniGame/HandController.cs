@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using Trellcko.Constants;
 using Trellcko.Core.Input;
 using UnityEngine;
 using Zenject;
@@ -10,8 +12,12 @@ namespace Trellcko.Gameplay.MiniGame
         [SerializeField] private Vector3 _handStartPosition;
         [SerializeField] private float _sensitivity = 40;
         [SerializeField] private Vector2 _zLocalBounds;
-
-        private event Action<bool> CookieGot;
+        [SerializeField] private Texture _hand;
+        [SerializeField] private Texture _handClose;
+        [SerializeField] private float _handChangeSpriteTime = 1f;
+        [SerializeField] private Material _handMaterial;
+        
+        public event Action<bool> CookieGot;
         
         private IInputHandler _inputHandler;
 
@@ -25,7 +31,7 @@ namespace Trellcko.Gameplay.MiniGame
         private void Update()
         {
             Vector3 mouseDelta = _inputHandler.GetMouseDelta();
-            mouseDelta *= _sensitivity * Time.deltaTime * -1;
+            mouseDelta *= _sensitivity * Time.deltaTime * 1;
             mouseDelta.y = 0;
             
             Vector3 newPosition = transform.position + mouseDelta;
@@ -38,15 +44,25 @@ namespace Trellcko.Gameplay.MiniGame
         public void Reset()
         {
             transform.localPosition = _handStartPosition;
+            _handMaterial.SetTexture(ShaderProperties.MainTex, _hand);
         }
 
         private void OnTriggerEnter(Collider other)
         {
             if (other.TryGetComponent(out Cookie cookie))
             {
+                StopAllCoroutines();
+                StartCoroutine(ChangeHandCorun());
                 CookieGot?.Invoke(cookie.IsGood);
                 Destroy(cookie.gameObject);
             }
+        }
+
+        private IEnumerator ChangeHandCorun()
+        {
+            _handMaterial.SetTexture(ShaderProperties.MainTex, _handClose);
+            yield return new WaitForSeconds(_handChangeSpriteTime);
+            _handMaterial.SetTexture(ShaderProperties.MainTex, _hand);
         }
     }
 }

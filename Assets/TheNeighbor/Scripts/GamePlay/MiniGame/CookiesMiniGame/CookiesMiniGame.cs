@@ -32,7 +32,8 @@ namespace Trellcko.Gameplay.MiniGame
 
         private PlayerFacade _playerFacade;
         private Coroutine _spawningCoroutine;
-        
+
+        private int _currentCookies;
         
         public bool IsPlaying { get; private set; }
         public MiniGameType MinigameType => MiniGameType.CookiesMiniGame;
@@ -50,8 +51,19 @@ namespace Trellcko.Gameplay.MiniGame
             _minStep = _minDistanceBetweenCookies / _totalDistance;
         }
 
+        private void OnEnable()
+        {
+            _handController.CookieGot += OnCookieGot;
+        }
+
+        private void OnDisable()
+        {
+            _handController.CookieGot -= OnCookieGot;
+        }
+
         public void StartGame()
         {
+            _currentCookies = 0;
             IsPlaying = true;
             _handController.transform.localPosition = _handStartPosition;
             _playerFacade.PlayerMovement.IsEnabled = false;
@@ -64,7 +76,7 @@ namespace Trellcko.Gameplay.MiniGame
 
         private IEnumerator SpawningCorun()
         {
-            WaitForSeconds wait = new WaitForSeconds(_spawnTime);
+            WaitForSeconds wait = new(_spawnTime);
             
             while (true)
             {
@@ -77,7 +89,7 @@ namespace Trellcko.Gameplay.MiniGame
         private Cookie SpawnCookie(Vector3 position)
         {
             float chance = Random.Range(0f, 1f);
-            List<Cookie> cookies = chance > _cookiesMiniGameData[0].cookiesChance ? _goodCookies : _badCookies;
+            List<Cookie> cookies = chance < _cookiesMiniGameData[0].cookiesChance ? _goodCookies : _badCookies;
             
             return Instantiate(cookies[Random.Range(0, cookies.Count)], position, Quaternion.identity);
         }
@@ -97,8 +109,32 @@ namespace Trellcko.Gameplay.MiniGame
             Finished?.Invoke(success,this);
         }
 
+        private void OnCookieGot(bool isGood)
+        {
+            if (isGood)
+                GoodImpact();
+            else
+                BadImapact();
+        }
+
+        private void BadImapact()
+        {
+            
+        }
+
+        private void GoodImpact()
+        {
+            _currentCookies++;
+
+            if (_currentCookies >= _cookiesMiniGameData[0].needCookies)
+            {
+                FinishGame(true);
+            }
+        }
+
         public void ExitGame()
         {
+            _cinemachineCamera.enabled = false;
             _handController.enabled = false;
             _playerFacade.PlayerMovement.IsEnabled = true;
             _playerFacade.PlayerRotation.IsEnabled = true;

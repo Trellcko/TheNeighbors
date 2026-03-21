@@ -12,7 +12,7 @@ namespace Trellcko.Gameplay.MiniGame
 
       private void Start()
       {
-         _rigidbody.linearVelocity = new Vector3(0, -_speed, 0);
+         _rigidbody.linearVelocity = new(0, -_speed, 0);
       }
    }
 }
